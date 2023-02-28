@@ -1,10 +1,10 @@
-## admin
+# admin
 
 ## Team Members
-Judy Gonzalez
-Kyle Moriarty
-Mai Nguyen
-Whitner Reichman
+Judy Gonzalez  
+Kyle Moriarty  
+Mai Nguyen  
+Whitner Reichman  
 
 ## Mission Statement 
 Proactive awareness and community intelligence reduce harm
