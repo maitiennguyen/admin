@@ -20,9 +20,9 @@ public class FileReport {
             return;
         }
         this.executeEdits(); // execute all edits, fill out the report
-        // Generate report id
+        this.report.setId(generateID());// generate random report id
         // submit it to database
-        System.out.println("Report submitted.");
+        System.out.println("Report submitted.\nReport ID: " + this.report.getId() + "\nPlease save the report ID for future access.");
     }
 
     public Report getReport() {
@@ -126,5 +126,26 @@ public class FileReport {
         Editor editEventDes = new EditEventDes(this.report, eventDesInput);
         this.addEdit(editEventDes);
         return false;
+    }
+
+    // generate random report ID String of length 10, case-sensitive
+    private String generateID() { // https://www.geeksforgeeks.org/generate-random-string-of-given-size-in-java/
+        // choose a Character random from this String
+        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                + "0123456789"
+                + "abcdefghijklmnopqrstuvxyz";
+
+        // create StringBuffer size of AlphaNumericString
+        StringBuilder sb = new StringBuilder(10);
+        for (int i = 0; i < 10; i++) { // generate a random number between 0 to AlphaNumericString variable length
+            int index = (int)(AlphaNumericString.length() * Math.random());
+            sb.append(AlphaNumericString.charAt(index)); // add Character one by one in end of sb
+        }
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        FileReport test = new FileReport();
+        test.createReport();
     }
 }

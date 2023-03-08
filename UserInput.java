@@ -112,7 +112,7 @@ public class UserInput {
         return yearInput;
     }
 
-    // make sure input is 10 digits
+    // make sure input is length 10
     public String reportID() {
         String reportIDInput = null; // user input
         String cancel = "cancel"; // cancel option
@@ -155,14 +155,14 @@ public class UserInput {
             }
             try {
                 value = Float.parseFloat(mhiInput); // make sure the input is numeric
-                if (value >= 0 && value <=10 && mhiInput.length() ==3) { // make sure mhi input is valid
+                if (value >= 0 && value <=10 && mhiInput.length() < 4) { // make sure mhi input is valid
                     isValid = true;
                 }
                 else {
-                    System.out.println("Invalid. Please try again between 0 and 10.");
+                    System.out.println("Invalid. Please try again between 0 and 10, to the tenth place.");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid. Please try again between 0 and 10.");
+                System.out.println("Invalid. Please try again between 0 and 10, to the tenth place.");
             }
         }
         return mhiInput;
