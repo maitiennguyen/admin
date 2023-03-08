@@ -28,6 +28,7 @@ public class FileReport {
         // submit it to database
 
         System.out.println("Report submitted.\nReport ID: " + this.report.getId() + "\nPlease save the report ID for future access.");
+        this.userInput.close(); // close scanner
     }
 
     public Report getReport() {
@@ -147,10 +148,5 @@ public class FileReport {
             sb.append(AlphaNumericString.charAt(index)); // add Character one by one in end of sb
         }
         return sb.toString();
-    }
-
-    public static void main(String[] args) {
-        FileReport test = new FileReport();
-        test.createReport();
     }
 }

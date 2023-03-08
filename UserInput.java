@@ -125,16 +125,11 @@ public class UserInput {
             if (reportIDInput.equals(cancel)) {
                 return cancel;
             }
-            try {
-                value = Integer.parseInt(reportIDInput); // make sure the input is numeric
-                if (reportIDInput.length() == 10) { // make sure there are 9 digits
-                    isValid = true;
-                }
-                else {
-                    System.out.println("Invalid. Please try again with 10 digits.");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid. Please try again with only numbers.");
+            if (reportIDInput.length() == 10) { // make sure there are 9 digits
+                isValid = true;
+            }
+            else {
+                System.out.println("Invalid. Please try again with 10 characters.");
             }
         }
         return reportIDInput;
