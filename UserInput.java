@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class UserInput {
-    Scanner userInput;
+    private Scanner userInput;
 
     // constructor
     public UserInput() {
@@ -61,19 +61,27 @@ public class UserInput {
     }
 
     // make sure input is integer and does not exceed the total available options
-    public int menuOpt(int totalOpts) {
+    public String menuOpt(int totalOpts) {
         boolean isValid = false; // for while loop when input is not in the range of menu options
-        int menuOptInput = 0; // user input
+        String menuOptInput = null; // user input
+        String admin = "admin"; // admin access for homepage, must have no space after admin
+        int value = 0; // check if input is numeric
 
         while (!isValid) {
-            while (!this.userInput.hasNextInt()) { // make sure input is integer
-                this.userInput.next();
+            menuOptInput = this.userInput.nextLine();
+            menuOptInput = menuOptInput.toLowerCase();
+            if(menuOptInput.equals(admin)) { // make sure input is larger than 0 and not greater than total # of options
+                return menuOptInput;
             }
-            menuOptInput = this.userInput.nextInt();
-            if(menuOptInput <= totalOpts && menuOptInput > 0) { // make sure input is larger than 0 anf not greater than total # of options
-                isValid = true;
-            }
-            else {
+            try {
+                value = Integer.parseInt(menuOptInput); // make sure the input is numeric
+                if (value > 0 && value <=totalOpts) { // make the numeric input is between 0 and highest option
+                    isValid = true;
+                }
+                else {
+                    System.out.println("Invalid. Please enter a valid number.");
+                }
+            } catch (NumberFormatException e) {
                 System.out.println("Invalid. Please enter a valid number.");
             }
         }
@@ -185,5 +193,11 @@ public class UserInput {
             }
         }
         return identityInput;
+    }
+
+    public static void main(String[] args) {
+        UserInput test = new UserInput();
+        String text = test.menuOpt(5);
+        System.out.println(text);
     }
 }
