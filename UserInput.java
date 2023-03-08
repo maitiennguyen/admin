@@ -194,10 +194,4 @@ public class UserInput {
         }
         return identityInput;
     }
-
-    public static void main(String[] args) {
-        UserInput test = new UserInput();
-        String text = test.menuOpt(5);
-        System.out.println(text);
-    }
 }
