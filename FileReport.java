@@ -6,8 +6,8 @@ public class FileReport {
     private UserInput userInput = new UserInput();
 
     public void createReport() {
-
         System.out.println("File A Report (Enter 'cancel' to return home)\n");
+
         if (this.gradYearPrompt() || // grad year
                 this.datePrompt() || // date
                 this.mhiPrompt() || // mental health impact
@@ -17,11 +17,16 @@ public class FileReport {
                 this.locationPrompt() || // location
                 this.eventDesPrompt() // event description
         ) {
+            System.out.println("Report canceled.");
             return;
         }
+
         this.executeEdits(); // execute all edits, fill out the report
+
         this.report.setId(generateID());// generate random report id
+
         // submit it to database
+
         System.out.println("Report submitted.\nReport ID: " + this.report.getId() + "\nPlease save the report ID for future access.");
     }
 
