@@ -21,8 +21,8 @@ public class UserInput {
         while (!isValid) {
             textInput = this.userInput.nextLine();
             textInput = textInput.toLowerCase();
-            str = textInput.split(" "); // check if input is cancel even with space after it
-            if (str[0].equals(cancel)) { // return cancel if user no longer wants to complete or edit the report
+            str = textInput.split(" "); // check if input is cancel alone even with space after it
+            if (str.length == 1&& str[0].equals(cancel)) { // return cancel if user no longer wants to complete or edit the report
                 return cancel;
             }
             if (!textInput.isEmpty()) {
