@@ -13,31 +13,22 @@ public class UserInput {
 
     // make sure input is string text and not empty
     public String text() {
-        String textInput = null;
-        boolean isValid = false;
+        String textInput;
         String cancel = "cancel"; // cancel option
-        String str[] = null;
+        String str[];
 
-        while (!isValid) {
-            textInput = this.userInput.nextLine();
-            textInput = textInput.toLowerCase();
-            str = textInput.split(" "); // check if input is cancel alone even with space after it
-            if (str.length == 1&& str[0].equals(cancel)) { // return cancel if user no longer wants to complete or edit the report
-                return cancel;
-            }
-            if (!textInput.isEmpty()) {
-                isValid = true;
-            }
-            else {
-                System.out.println("Invalid. Please provide NA if not applicable.");
-            }
+        textInput = this.userInput.nextLine();
+        textInput = textInput.toLowerCase();
+        str = textInput.split(" "); // check if input is cancel alone even with space after it
+        if (str.length == 1 && str[0].equals(cancel)) { // return cancel if user no longer wants to complete or edit the report
+            return cancel;
         }
         return textInput;
     }
 
     // make sure input is string date in MM/dd/yyyy format
     public String date() {
-        String dateInput = null;
+        String dateInput;
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy"); //set the date format
         dateFormat.setLenient(false); // throw Parse Exception if input is not in correct format
         Date date = null;  // date object
@@ -52,7 +43,12 @@ public class UserInput {
             }
             try {
                 date = dateFormat.parse(dateInput); // parse input and convert to date object
-                isValid = true; // if input is in correct format, get out of while loop
+                if (dateInput.length() == 10) {
+                    isValid = true; // if input is in correct format, get out of while loop
+                }
+                else {
+                    System.out.println("Invalid. Please try again in MM/dd/yyyy format.");
+                }
             } catch (ParseException e) { // if input is not in correct format, display error message and restart the while loop
                 System.out.println("Invalid. Please try again in MM/dd/yyyy format.");
             }
@@ -65,7 +61,7 @@ public class UserInput {
         boolean isValid = false; // for while loop when input is not in the range of menu options
         String menuOptInput = null; // user input
         String admin = "admin"; // admin access for homepage, must have no space after admin
-        int value = 0; // check if input is numeric
+        int value; // check if input is numeric
 
         while (!isValid) {
             menuOptInput = this.userInput.nextLine();
@@ -92,7 +88,7 @@ public class UserInput {
     public String year() {
         String yearInput = null; // user input
         String cancel = "cancel"; // cancel option
-        int value = 0; // make sure input is numeric
+        int value; // make sure input is numeric
         boolean isValid = false; // for while loop when input is not numeric oor not between 1900 and 2100
 
         while(!isValid) {
@@ -144,11 +140,11 @@ public class UserInput {
         return reportIDInput;
     }
 
-    // make sure input is numeric between 1 and 10
+    // make sure input is numeric between 0 and 10
     public String mhi() {
         String mhiInput = null; // user input
         String cancel = "cancel"; // cancel option
-        int value = 0; // make sure input is numeric
+        float value; // make sure input is numeric
         boolean isValid = false; // for while loop when input is not numeric oor not between 1 and 10
 
         while(!isValid) {
@@ -158,15 +154,15 @@ public class UserInput {
                 return cancel;
             }
             try {
-                value = Integer.parseInt(mhiInput); // make sure the input is numeric
-                if (value >= 1 && value <=10) { // make sure mhi input is valid
+                value = Float.parseFloat(mhiInput); // make sure the input is numeric
+                if (value >= 0 && value <=10 && mhiInput.length() ==3) { // make sure mhi input is valid
                     isValid = true;
                 }
                 else {
-                    System.out.println("Invalid. Please try again between 1 and 10.");
+                    System.out.println("Invalid. Please try again between 0 and 10.");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid. Please try again between 1 and 10.");
+                System.out.println("Invalid. Please try again between 0 and 10.");
             }
         }
         return mhiInput;
@@ -178,14 +174,14 @@ public class UserInput {
         String cancel = "cancel"; // cancel option
         String yes = "y";
         String no = "n";
-        boolean isValid = false; // for while loop when input is not numeric oor not between 1900 and 2100
+        boolean isValid = false; // for while loop when input is not y or n
         while(!isValid) {
             identityInput = userInput.nextLine();
             identityInput = identityInput.toLowerCase();
             if (identityInput.equals(cancel)) {
                 return cancel;
             }
-            if (identityInput.equals(yes) || identityInput.equals(no)) {
+            if (identityInput.equals(yes) || identityInput.equals(no) || identityInput.isEmpty()) {
                 isValid = true;
             }
             else {
@@ -193,5 +189,9 @@ public class UserInput {
             }
         }
         return identityInput;
+    }
+
+    public void close() {
+        this.userInput.close();
     }
 }
