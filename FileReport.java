@@ -1,11 +1,13 @@
 import java.util.ArrayList;
 
 public class FileReport {
-    private Report report = new Report();
-    private ArrayList<Editor> editList = new ArrayList<Editor>();
-    private UserInput userInput = new UserInput();
+    protected Report report;
+    protected ArrayList<Editor> editList = new ArrayList<Editor>();
+    protected UserInput userInput = new UserInput();
 
     public void createReport() {
+        this.report = new Report();
+
         System.out.println("File A Report (Enter 'cancel' to return home)\n");
 
         if (this.gradYearPrompt() || // grad year
@@ -35,17 +37,17 @@ public class FileReport {
         return this.report;
     }
 
-    private void addEdit(Editor edit) {
+    protected void addEdit(Editor edit) {
         editList.add(edit);
     }
 
-    private void executeEdits() {
+    protected void executeEdits() {
         for (Editor edit : editList) {
             edit.execute();
         }
     }
 
-    private boolean gradYearPrompt() {
+    protected boolean gradYearPrompt() {
         System.out.println("Enter your graduation year YYYY (required): ");
         String yearInput = userInput.year();
         if (yearInput.equals("cancel")) {
@@ -57,7 +59,7 @@ public class FileReport {
         return false;
     }
 
-    private boolean datePrompt() {
+    protected boolean datePrompt() {
         System.out.println("Enter the date of incident MM/dd/yyyy (required): ");
         String dateInput = userInput.date();
         if (dateInput.equals("cancel")) {
@@ -68,7 +70,7 @@ public class FileReport {
         return false;
     }
 
-    private boolean mhiPrompt() {
+    protected boolean mhiPrompt() {
         System.out.println("On a scale of 0 to 10, rate the impact of the incident on your mental health (required): ");
         String mhiInput = userInput.mhi();
         if (mhiInput.equals("cancel")) {
@@ -79,7 +81,7 @@ public class FileReport {
         return false;
     }
 
-    private boolean mhiTextPrompt() {
+    protected boolean mhiTextPrompt() {
         System.out.println("Share your mental health experience (optional - enter to skip): ");
         String mhiTextInput = userInput.text();
         if (mhiTextInput.equals("cancel")) {
@@ -90,8 +92,8 @@ public class FileReport {
         return false;
     }
 
-    private boolean identityPrompt() {
-        System.out.println("Do you think your identity was being targeted? y or n (optional - enter to skip): ");
+    protected boolean identityPrompt() {
+        System.out.println("Do you think your identities were being targeted? y or n (optional - enter to skip): ");
         String identityInput = userInput.identityYN();
         if (identityInput.equals("cancel")) {
             return true;
@@ -101,8 +103,8 @@ public class FileReport {
         return false;
     }
 
-    private boolean identityTextPrompt() {
-        System.out.println("If yes, which aspects of your identity do you feel were relevant to this event? (optional - enter to skip): ");
+    protected boolean identityTextPrompt() {
+        System.out.println("If yes, which aspect(s) of your identity do you feel were relevant to this event? (optional - enter to skip): ");
         String identityTextInput = userInput.text();
         if (identityTextInput.equals("cancel")) {
             return true;
@@ -112,7 +114,7 @@ public class FileReport {
         return false;
     }
 
-    private boolean locationPrompt() {
+    protected boolean locationPrompt() {
         System.out.println("Enter location of incident (optional - enter to skip): ");
         String locationInput = userInput.text();
         if (locationInput.equals("cancel")) {
@@ -123,7 +125,7 @@ public class FileReport {
         return false;
     }
 
-    private boolean eventDesPrompt() {
+    protected boolean eventDesPrompt() {
         System.out.println("Event description (optional - enter to skip): ");
         String eventDesInput = userInput.text();
         if (eventDesInput.equals("cancel")) {
@@ -135,7 +137,7 @@ public class FileReport {
     }
 
     // generate random report ID String of length 10, case-sensitive
-    private String generateID() { // https://www.geeksforgeeks.org/generate-random-string-of-given-size-in-java/
+    protected String generateID() { // https://www.geeksforgeeks.org/generate-random-string-of-given-size-in-java/
         // choose a Character random from this String
         String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 + "0123456789"
