@@ -3,9 +3,9 @@ import java.util.ArrayList;
 public class AccessReport extends FileReport{
     protected String reportID;
 
-//    public AccessReport(Report report) { // DELETE
-//        this.report = report;
-//    }
+    public AccessReport(Report report) { // DELETE
+        this.report = report;
+    }
 
     public void showReport() {
         System.out.println("Access Report (Enter 'cancel' to return home)\n");
@@ -35,6 +35,7 @@ public class AccessReport extends FileReport{
         System.out.println("7. Location: " + this.report.getLocation());
         System.out.println("8. Event description: " + this.report.getEventDes());
         System.out.println("9. Done");
+        System.out.println("10. Delete");
     }
 
     public void editReport() {
@@ -54,24 +55,25 @@ public class AccessReport extends FileReport{
                 case "7" -> this.locationPrompt();
                 case "8" -> this.eventDesPrompt();
                 case "9" -> done = true;
+                // case "10" -> deleteReport
             }
         }
         this.executeEdits();
     }
 
-//    public static void main(String[] args) { //DELETE
-//        Report report = new Report();
-//        report.setGradYear("2020");
-//        report.setDate("01/01/2001");
-//        report.setMHI("5");
-//        report.setMHIText("");
-//        report.setIdentityYN("y");
-//        report.setIdentityText("hello world");
-//        report.setLocation("home");
-//        report.setEventDes("");
-//
-//        AccessReport test = new AccessReport(report);
-//        test.editReport();
-//        System.out.println(report.getGradYear() + " " + report.getDate() + " " + report.getMHI() + " " + report.getMHIText() + " " + report.getIdentityYN() + " " + report.getIdentityText() + " " + report.getLocation() + " " + report.getEventDes());
-//    }
+    public static void main(String[] args) { //DELETE
+        Report report = new Report();
+        report.setGradYear("2020");
+        report.setDate("01/01/2001");
+        report.setMHI("5");
+        report.setMHIText("");
+        report.setIdentityYN("y");
+        report.setIdentityText("hello world");
+        report.setLocation("home");
+        report.setEventDes("");
+
+        AccessReport test = new AccessReport(report);
+        test.editReport();
+        System.out.println(report.getGradYear() + " " + report.getDate() + " " + report.getMHI() + " " + report.getMHIText() + " " + report.getIdentityYN() + " " + report.getIdentityText() + " " + report.getLocation() + " " + report.getEventDes());
+    }
 }
