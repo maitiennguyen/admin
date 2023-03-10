@@ -4,7 +4,7 @@ public class Save extends ReportDAO implements sqlDataMethods {
     @Override
     public void saveReport(Report report) {
         try {
-            String sql = "INSERT INTO Reports (Grad, MHI, MHIT, Date, IdentityYN, IdentityTxt, Location, EventD) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Reports (Grad, MHI, MHIT, Date, IdentityYN, IdentityTxt, Location, EventD, AltID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             statement = conn.prepareStatement(sql);
             statement.setString(1, report.getGradYear());
             statement.setString(2, report.getMHI());
@@ -12,7 +12,7 @@ public class Save extends ReportDAO implements sqlDataMethods {
             statement.setString(4, report.getDate());
             statement.setString(5, report.getIdentityYN());
             statement.setString(6, report.getIdentityText());
-            ReportDAO.statement.setString(7, report.getLocation());
+            statement.setString(7, report.getLocation());
             statement.setString(8, report.getEventDes());
             statement.setString(9, report.getId());
             statement.executeUpdate();
@@ -24,7 +24,7 @@ public class Save extends ReportDAO implements sqlDataMethods {
 
     public void retrieveReport(String Id) {
         try {
-            String sql = "SELECT * FROM Reports WHERE ReportID = ?";
+            String sql = "SELECT * FROM Reports WHERE AltID = ?";
             statement = conn.prepareStatement(sql);
             statement.setString(1, Id);
             ResultSet resultSet = statement.executeQuery();
