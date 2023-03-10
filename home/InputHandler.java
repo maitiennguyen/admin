@@ -24,17 +24,23 @@ public class InputHandler {
                         break;
                     case 2:
                         // create a MoreInformation object and call its method
-                        MoreInformation info = new MoreInformation();
-                        info.displayInfo();
+                        AdditionalResources info = new AdditionalResources();
+                        info.displayAllInfo();
                         chosen = true;
                         break;
                     case 3:
+                        //Create an About object and call its method
+                        About ab = new About();
+                        ab.displayAllInfo();
+                        chosen = true;
+                        break;
+                    case 4:
                         // create a FileReport object and call its method
                         FileReport report = new FileReport();
                         report.createReport();
                         chosen = true;
                         break;
-                    case 4:
+                    case 5:
                         // create an AccessReport object and call its method
                         AccessReport access = new AccessReport();
                         access.showReport();
