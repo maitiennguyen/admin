@@ -1,5 +1,6 @@
 public class Statistics {
     public void calculate() {
-        System.out.println("Calculating statistics...");
+        Stats test1 = new Stats();
     }
+
 }

@@ -1,10 +1,5 @@
 public class GraduationClassFilter implements Filter{
     @Override
-    public int size() {
-        return 0;
-    }
-
-    @Override
     public void readThroughReportData() {
 
     }
