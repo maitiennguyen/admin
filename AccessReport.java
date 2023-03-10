@@ -6,7 +6,7 @@ public class AccessReport extends FileReport{
     public void showReport() {
         System.out.println("Access Report (Enter 'cancel' to return home)\n");
         reportID = this.reportIDPrompt();
-        // this.report = getReport
+        save.retrieveReport(reportID);
         this.displayReport(); // display report info
         this.editReport();
         // update report in database
@@ -30,8 +30,8 @@ public class AccessReport extends FileReport{
         System.out.println("6. Provided identities: " + this.report.getIdentityText());
         System.out.println("7. Location: " + this.report.getLocation());
         System.out.println("8. Event description: " + this.report.getEventDes());
-        System.out.println("9. Done");
-        System.out.println("10. Delete");
+        System.out.println("9. Delete");
+        System.out.println("10. Done");
     }
 
     public void editReport() {
@@ -50,8 +50,9 @@ public class AccessReport extends FileReport{
                 case "6" -> this.identityTextPrompt();
                 case "7" -> this.locationPrompt();
                 case "8" -> this.eventDesPrompt();
-                case "9" -> done = true;
-                // case "10" -> deleteReport
+                case "9" -> this.save.deleteReport(this.report.getId());
+                case "10" -> done = true;
+
             }
         }
         this.executeEdits();
