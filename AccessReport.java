@@ -16,8 +16,7 @@ public class AccessReport extends FileReport{
 
     private String reportIDPrompt() {
         System.out.println("Enter report ID: ");
-        String reportIDInput = this.userInput.reportID();
-        return reportIDInput;
+        return this.userInput.reportID();
     }
 
     private void displayReport() {
@@ -50,9 +49,9 @@ public class AccessReport extends FileReport{
                 case "6" -> this.identityTextPrompt();
                 case "7" -> this.locationPrompt();
                 case "8" -> this.eventDesPrompt();
+
                 case "9" -> this.save.deleteReport(this.report.getId());
                 case "10" -> done = true;
-
             }
         }
         this.executeEdits();
