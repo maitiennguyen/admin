@@ -1,0 +1,12 @@
+The program does not loop, and exits after each option from the home page runs to completion or cancellation
+Retrieve report does not work
+When retrieving report, if the user enters an incorrect 10 character id it crashes the program
+Additional resources should have resources before details (also, we should include off campus resources)
+Error messages for home neeed to be updated to 1-5 (right now it is only 1-4)
+Error saving report (parameter index out of range, probably related to the added Alt ID column in the table
+About section should be listed a the top
+The distance between graduation year and date of incident should probably have a 50 year max or something
+Statistics page needs a better UI and information catagories
+Cancel does not work in accessReport
+Dates that have not happened yet are accepted as event dates
+changing fields in the file report fucntionality
