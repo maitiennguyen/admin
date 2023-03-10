@@ -4,6 +4,7 @@ public class FileReport {
     protected Report report;
     protected ArrayList<Editor> editList = new ArrayList<Editor>();
     protected UserInput userInput = new UserInput();
+    protected Save save = new Save();
 
     public void createReport() {
         this.report = new Report();
@@ -28,8 +29,11 @@ public class FileReport {
         this.report.setId(generateID());// generate random report id
 
         // submit it to database
+        ReportDAO DAO = new ReportDAO();
+        ReportDAO.makeDBConnection();
+        save.saveReport(this.report); //implementing save method
 
-        System.out.println("Report submitted.\nReport ID: " + this.report.getId() + "\nPlease save the report ID for future access.");
+        System.out.println("Report ID: " + this.report.getId() + "\nPlease save the report ID for future access.");
         this.userInput.close(); // close scanner
     }
 

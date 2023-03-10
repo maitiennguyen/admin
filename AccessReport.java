@@ -3,10 +3,6 @@ import java.util.ArrayList;
 public class AccessReport extends FileReport{
     protected String reportID;
 
-    public AccessReport(Report report) { // DELETE
-        this.report = report;
-    }
-
     public void showReport() {
         System.out.println("Access Report (Enter 'cancel' to return home)\n");
         reportID = this.reportIDPrompt();
@@ -59,21 +55,5 @@ public class AccessReport extends FileReport{
             }
         }
         this.executeEdits();
-    }
-
-    public static void main(String[] args) { //DELETE
-        Report report = new Report();
-        report.setGradYear("2020");
-        report.setDate("01/01/2001");
-        report.setMHI("5");
-        report.setMHIText("");
-        report.setIdentityYN("y");
-        report.setIdentityText("hello world");
-        report.setLocation("home");
-        report.setEventDes("");
-
-        AccessReport test = new AccessReport(report);
-        test.editReport();
-        System.out.println(report.getGradYear() + " " + report.getDate() + " " + report.getMHI() + " " + report.getMHIText() + " " + report.getIdentityYN() + " " + report.getIdentityText() + " " + report.getLocation() + " " + report.getEventDes());
     }
 }
