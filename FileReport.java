@@ -34,7 +34,6 @@ public class FileReport {
         save.saveReport(this.report); //implementing save method
 
         System.out.println("Report ID: " + this.report.getId() + "\nPlease save the report ID for future access.");
-        this.userInput.close(); // close scanner
     }
 
     public Report getReport() {
