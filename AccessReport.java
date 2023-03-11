@@ -11,7 +11,6 @@ public class AccessReport extends FileReport{
         this.editReport();
         // update report in database
         System.out.println("Report saved.");
-        this.userInput.close();
     }
 
     private String reportIDPrompt() {

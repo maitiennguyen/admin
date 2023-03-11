@@ -5,10 +5,14 @@ import java.util.InputMismatchException;
 public class Main {
     public static void main(String[] args)
     {
-        printDisplay display = new printDisplay();
-        display.printOptions();
+        boolean running = true;
 
-        InputHandler inputHandler = new InputHandler();
-        inputHandler.handleInput();
+        while (running) {
+            printDisplay display = new printDisplay();
+            display.printOptions();
+
+            InputHandler inputHandler = new InputHandler();
+            running = inputHandler.handleInput();
+        }
     }
 }

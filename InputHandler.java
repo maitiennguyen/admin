@@ -10,7 +10,7 @@ public class InputHandler {
         chosen = false;
     }
 
-    public void handleInput() {
+    public boolean handleInput() {
         while (!chosen) {
             try {
                 int input = scanner.nextInt();
@@ -46,6 +46,10 @@ public class InputHandler {
                         access.showReport();
                         chosen = true;
                         break;
+
+                    case 6:
+                        System.out.println("Goodbye!");
+                        return false;
                     default:
                         System.out.println("Invalid input. Try again!");
                         break;
@@ -55,8 +59,9 @@ public class InputHandler {
                 scanner.nextLine();
 
                 // Prompt user to try again
-                System.out.println("Invalid input. Please enter a number between 1 and 4.");
+                System.out.println("Invalid input. Please enter a number between 1 and 6.");
             }
         }
+        return true;
     }
 }
