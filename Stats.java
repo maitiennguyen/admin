@@ -1,11 +1,11 @@
 import java.sql.*;
+import java.util.Scanner;
 
 public class Stats {
     String title = "Statistics";
-    UserInput userInput;
+    Scanner scan = new Scanner(System.in);
 
     public Stats (){
-        userInput = new UserInput();
         System.out.println(title);
         System.out.println();
         displayAllReports();
@@ -13,10 +13,33 @@ public class Stats {
         displayReportsWithMHIGreaterThan5();
         displayReportsWhereIdentityWasAFactor();
         System.out.println();
-        System.out.println("What would you like to filter by? Please pick date, location, or graduation class.");
-        String filterCriteria = userInput.text();
+
+        userInput();
 
 //        displayFilteredReports();
+    }
+
+    public void userInput(){
+        String filterCriteria = "";
+        while(!filterCriteria.equalsIgnoreCase("no")){
+            System.out.println("What would you like to filter by? Please type in date, location, or graduation class.");
+            filterCriteria = scan.nextLine();
+
+            if (filterCriteria.equalsIgnoreCase("date")) {
+                System.out.println("You inputted in date.");
+                //specifc date filter
+            } else if (filterCriteria.equalsIgnoreCase("location")){
+                System.out.println("You inputted in location.");
+                //specific location filter
+            } else if (filterCriteria.equalsIgnoreCase("graduation class")){
+                System.out.println("You inputted in graduation class.");
+                //specific graduation filter
+            } else {
+                System.out.println("Invalid filter criteria input, please try again.");
+            }
+            System.out.println("Would you like to filter again? Type in yes or no.");
+            filterCriteria = scan.nextLine();
+        }
     }
 
     public int countRows(String tableName, String columnName, String condition) { //to get the total number of reports as a number
