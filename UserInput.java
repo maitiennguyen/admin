@@ -1,5 +1,7 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -27,7 +29,7 @@ public class UserInput {
     }
 
     // make sure input is string date in MM/dd/yyyy format
-    public String date() {
+    public String date(String gradYear) {
         String dateInput;
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy"); //set the date format
         dateFormat.setLenient(false); // throw Parse Exception if input is not in correct format
@@ -43,11 +45,12 @@ public class UserInput {
             }
             try {
                 date = dateFormat.parse(dateInput); // parse input and convert to date object
-                if (dateInput.length() == 10) {
+                LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(); // convert to local date object to compare to current date
+                if (dateInput.length() == 10 && !localDate.isAfter(LocalDate.now()) && localDate.isAfter(LocalDate.of(Integer.parseInt(gradYear) - 20,12,31))) {
                     isValid = true; // if input is in correct format, get out of while loop
                 }
                 else {
-                    System.out.println("Invalid. Please try again in MM/dd/yyyy format.");
+                    System.out.println("Invalid. Please try again in MM/dd/yyyy format. Make sure date is in the past or today and within the last 20 years of your graduation year.");
                 }
             } catch (ParseException e) { // if input is not in correct format, display error message and restart the while loop
                 System.out.println("Invalid. Please try again in MM/dd/yyyy format.");
@@ -116,9 +119,7 @@ public class UserInput {
     public String reportID() {
         String reportIDInput = null; // user input
         String cancel = "cancel"; // cancel option
-        int value = 0; // make sure input is numeric
         boolean isValid = false; // for while loop when input is not numeric or not 9 digits
-
         while(!isValid) {
             reportIDInput = this.userInput.nextLine();
             reportIDInput = reportIDInput.toLowerCase();
@@ -184,9 +185,5 @@ public class UserInput {
             }
         }
         return identityInput;
-    }
-
-    public void close() {
-        this.userInput.close();
     }
 }
