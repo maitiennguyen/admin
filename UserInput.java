@@ -46,11 +46,11 @@ public class UserInput {
             try {
                 date = dateFormat.parse(dateInput); // parse input and convert to date object
                 LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(); // convert to local date object to compare to current date
-                if (dateInput.length() == 10 && !localDate.isAfter(LocalDate.now())) {
+                if (dateInput.length() == 10 && !localDate.isAfter(LocalDate.now()) && localDate.isAfter(LocalDate.of(1899,12,31))) {
                     isValid = true; // if input is in correct format, get out of while loop
                 }
                 else {
-                    System.out.println("Invalid. Please try again in MM/dd/yyyy format and date is in the past or today.");
+                    System.out.println("Invalid. Please try again in MM/dd/yyyy format, date is in the past or today, and date is after 12/31/1899.");
                 }
             } catch (ParseException e) { // if input is not in correct format, display error message and restart the while loop
                 System.out.println("Invalid. Please try again in MM/dd/yyyy format.");
