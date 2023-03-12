@@ -186,8 +186,4 @@ public class UserInput {
         }
         return identityInput;
     }
-
-    public void close() {
-        this.userInput.close();
-    }
 }
