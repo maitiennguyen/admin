@@ -5,6 +5,7 @@ public class FileReport {
     protected ArrayList<Editor> editList = new ArrayList<Editor>();
     protected UserInput userInput = new UserInput();
     protected Save save = new Save();
+    private String gradYear;
 
     public void createReport() {
         this.report = new Report();
@@ -56,15 +57,15 @@ public class FileReport {
         if (yearInput.equals("cancel")) {
             return true;
         }
-        // if (yearInput
         Editor editGradYear = new EditGradYear(this.report, yearInput);
         this.addEdit(editGradYear);
+        this.gradYear = yearInput;
         return false;
     }
 
     protected boolean datePrompt() {
         System.out.println("Enter the date of incident MM/dd/yyyy (required): ");
-        String dateInput = userInput.date();
+        String dateInput = userInput.date(this.gradYear);
         if (dateInput.equals("cancel")) {
             return true;
         }
