@@ -20,5 +20,6 @@ public class About extends MoreInfo{
         System.out.println();
         System.out.println(howToNavigateHeading);
         System.out.printf(howToNavigateDescription);
+        System.out.println();
     }
 }
