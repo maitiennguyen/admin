@@ -29,7 +29,7 @@ public class UserInput {
     }
 
     // make sure input is string date in MM/dd/yyyy format
-    public String date() {
+    public String date(String gradYear) {
         String dateInput;
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy"); //set the date format
         dateFormat.setLenient(false); // throw Parse Exception if input is not in correct format
@@ -46,11 +46,11 @@ public class UserInput {
             try {
                 date = dateFormat.parse(dateInput); // parse input and convert to date object
                 LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(); // convert to local date object to compare to current date
-                if (dateInput.length() == 10 && !localDate.isAfter(LocalDate.now()) && localDate.isAfter(LocalDate.of(1899,12,31))) {
+                if (dateInput.length() == 10 && !localDate.isAfter(LocalDate.now()) && localDate.isAfter(LocalDate.of(Integer.parseInt(gradYear) - 20,12,31))) {
                     isValid = true; // if input is in correct format, get out of while loop
                 }
                 else {
-                    System.out.println("Invalid. Please try again in MM/dd/yyyy format, date is in the past or today, and date is after 12/31/1899.");
+                    System.out.println("Invalid. Please try again in MM/dd/yyyy format. Make sure date is in the past or today and within the last 20 years of your graduation year.");
                 }
             } catch (ParseException e) { // if input is not in correct format, display error message and restart the while loop
                 System.out.println("Invalid. Please try again in MM/dd/yyyy format.");
