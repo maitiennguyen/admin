@@ -1,8 +1,10 @@
 import java.sql.*;
 
-public class Save extends ReportDAO implements sqlDataMethods {
+public class Save extends ReportDAO implements sqlDataMethods
+{
     @Override
-    public void saveReport(Report report) {
+    public void saveReport(Report report)
+    {
         try {
             String sql = "INSERT INTO Reports (Grad, MHI, MHIT, Date, IdentityYN, IdentityTxt, Location, EventD, AltID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             statement = conn.prepareStatement(sql);
@@ -22,8 +24,10 @@ public class Save extends ReportDAO implements sqlDataMethods {
         }
     }
 
-    public void retrieveReport(String Id) {
-        try {
+    public Report retrieveReport(String Id)
+    {
+        try
+        {
             String sql = "SELECT * FROM Reports WHERE AltID = ?";
             statement = conn.prepareStatement(sql);
             statement.setString(1, Id);
@@ -40,13 +44,19 @@ public class Save extends ReportDAO implements sqlDataMethods {
                 report.setEventDes(resultSet.getString("EventD"));
                 report.setId(resultSet.getString("AltID"));
                 System.out.println("Report retrieved successfully.");
-            } else {
+                return report;
+            }
+            else
+            {
                 System.out.println("No report found with ID " + Id);
             }
         } catch (SQLException e) {
             System.out.println("Error retrieving report: " + e.getMessage());
         }
+        return null;
     }
+
+
 
     @Override
     public void deleteReport(String Id) {

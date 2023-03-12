@@ -6,7 +6,7 @@ public class AccessReport extends FileReport{
     public void showReport() {
         System.out.println("Access Report (Enter 'cancel' to return home)\n");
         reportID = this.reportIDPrompt();
-        save.retrieveReport(reportID);
+        Report report = save.retrieveReport(reportID);
         this.displayReport(); // display report info
         this.editReport();
         // update report in database
