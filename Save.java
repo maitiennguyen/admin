@@ -60,7 +60,7 @@ public class Save extends ReportDAO implements sqlDataMethods
 
     @Override
     public void deleteReport(String Id) {
-        String sql = "DELETE FROM Reports WHERE ReportID = ?";
+        String sql = "DELETE FROM Reports WHERE AltID = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, Id);
             pstmt.executeUpdate();

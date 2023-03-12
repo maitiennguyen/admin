@@ -6,7 +6,7 @@ public class AccessReport extends FileReport{
     public void showReport() {
         System.out.println("Access Report (Enter 'cancel' to return home)\n");
         reportID = this.reportIDPrompt();
-        Report report = save.retrieveReport(reportID);
+        this.report = save.retrieveReport(reportID);
         this.displayReport(); // display report info
         this.editReport();
         // update report in database
@@ -37,7 +37,7 @@ public class AccessReport extends FileReport{
         boolean done = false;
 
         while (!done) {
-            System.out.println("\nEnter a number to edit corresponding field. Enter 9 to save edit(s).");
+            System.out.println("\nEnter a number to edit corresponding field. Enter 10 to save edit(s).");
             menuInput = this.userInput.menuOpt(9);
             switch (menuInput) {
                 case "1" -> this.gradYearPrompt();
@@ -48,7 +48,6 @@ public class AccessReport extends FileReport{
                 case "6" -> this.identityTextPrompt();
                 case "7" -> this.locationPrompt();
                 case "8" -> this.eventDesPrompt();
-
                 case "9" -> this.save.deleteReport(this.report.getId());
                 case "10" -> done = true;
             }
