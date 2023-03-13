@@ -1,16 +1,7 @@
-public class DateFilter implements Filter{
-    @Override
-    public void readThroughReportData() {
-
-    }
+public class DateFilter implements Filter {
 
     @Override
-    public void filterStatistics() {
-
-    }
-
-    @Override
-    public void displayFilteredStatistics() {
+    public void filterCriteria() {
 
     }
 }
