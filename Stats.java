@@ -2,7 +2,7 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class Stats {
-    String title = "Statistics";
+    String title = "Campus Statistics";
     Scanner scan = new Scanner(System.in);
 
     public Stats (){
@@ -14,31 +14,66 @@ public class Stats {
         displayReportsWhereIdentityWasAFactor();
         System.out.println();
 
-        userInput();
+        filterYN();
 
 //        displayFilteredReports();
     }
+    public void filterYN(){
+        String filterYNAnswer = "";
 
-    public void userInput(){
+        while (true){
+            System.out.println("Would you like to filter through our statistics? Please type in yes or no.");
+            filterYNAnswer = scan.nextLine();
+            if (filterYNAnswer.equals("yes")){
+                filterCriteriaUserInput();
+                break;
+            } else if (filterYNAnswer.equals("no")){
+                break;
+            } else {
+                System.out.println("Invalid user input. Please try again.");
+            }
+        }
+    }
+
+    public void filterCriteriaUserInput() {
         String filterCriteria = "";
-        while(!filterCriteria.equalsIgnoreCase("no")){
+        boolean validCriteria = false;
+
+        while (!validCriteria) {
             System.out.println("What would you like to filter by? Please type in date, location, or graduation class.");
             filterCriteria = scan.nextLine();
 
-            if (filterCriteria.equalsIgnoreCase("date")) {
+            if (filterCriteria.equals("date")) {
                 System.out.println("You inputted in date.");
                 //specifc date filter
-            } else if (filterCriteria.equalsIgnoreCase("location")){
+                validCriteria = true;
+            } else if (filterCriteria.equals("location")) {
                 System.out.println("You inputted in location.");
                 //specific location filter
-            } else if (filterCriteria.equalsIgnoreCase("graduation class")){
+                validCriteria = true;
+            } else if (filterCriteria.equals("graduation class")) {
                 System.out.println("You inputted in graduation class.");
                 //specific graduation filter
+                validCriteria = true;
+            } else if (filterCriteria.equals("no")){
+                return;
             } else {
                 System.out.println("Invalid filter criteria input, please try again.");
             }
-            System.out.println("Would you like to filter again? Type in yes or no.");
-            filterCriteria = scan.nextLine();
+
+            boolean validAnswer = false;
+            while (!validAnswer) {
+                System.out.println("Would you like to filter again? Type in yes or no.");
+                String filterAgainResponse = scan.nextLine();
+                if (filterAgainResponse.equals("yes")) {
+                    validAnswer = true;
+                    validCriteria = false;
+                } else if (filterAgainResponse.equals("no")) {
+                    return;
+                } else {
+                    System.out.println("Invalid response. Please try again.");
+                }
+            }
         }
     }
 
