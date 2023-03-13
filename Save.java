@@ -70,13 +70,7 @@ public class Save extends ReportDAO implements sqlDataMethods
             statement.setString(7, report.getLocation());
             statement.setString(8, report.getEventDes());
             statement.setString(9, report.getId());
-            int rowsUpdated = statement.executeUpdate();
-            if (rowsUpdated > 0) {
-                System.out.println("Report edited successfully.");
-            }
-            else {
-                System.out.println("The information is already up to date.");
-            }
+            statement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error updating report: " + e.getMessage());
         }
