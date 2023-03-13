@@ -56,11 +56,35 @@ public class Save extends ReportDAO implements sqlDataMethods
         return null;
     }
 
+    public void updateReport(Report report) {
+        try {
+            String sql = "UPDATE Reports SET Grad = ?, MHI = ?, MHIT = ?, Date = ?, IdentityYN = ?, IdentityTxt = ?, Location = ?, EventD = ? WHERE AltID = ?";
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, report.getGradYear());
+            statement.setString(2, report.getMHI());
+            statement.setString(3, report.getMHIText());
+            statement.setString(4, report.getDate());
+            statement.setString(5, report.getIdentityYN());
+            statement.setString(6, report.getIdentityText());
+            statement.setString(7, report.getLocation());
+            statement.setString(8, report.getEventDes());
+            statement.setString(9, report.getId());
+            int rowsUpdated = statement.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Report edited successfully.");
+            }
+            else {
+                System.out.println("The information is already up to date.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error updating report: " + e.getMessage());
+        }
 
+    }
 
     @Override
     public void deleteReport(String Id) {
-        String sql = "DELETE FROM Reports WHERE ReportID = ?";
+        String sql = "DELETE FROM Reports WHERE AltID = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, Id);
             pstmt.executeUpdate();
