@@ -100,8 +100,8 @@ public class Stats {
         System.out.println("Total number of reports: " + countRows("Reports", "ID", "MHI > 0"));
     }
 
-    public void displayReportsStartingFrom2020(){
-        System.out.println("Total number of reports starting from 2020: " + countRows("Reports", "ID", "Date > 12/31/2019"));
+    public void displayReportsStartingFrom2020(){ //date is in a string and that's why it doesn't compare dates
+        System.out.println("Total number of reports starting from 2020: " + countRows("Reports", "Date", "Date > 12/31/2019"));
     }
 
     public void displayReportsWithMHIGreaterThan5(){
@@ -109,7 +109,6 @@ public class Stats {
     }
 
     public void displayReportsWhereIdentityWasAFactor(){
-
         System.out.println("Total number of reports where identity was a factor: " + countRows("Reports", "IdentityYN", "IdentityYN = 'y'"));
     }
 
