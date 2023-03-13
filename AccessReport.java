@@ -10,6 +10,9 @@ public class AccessReport extends FileReport{
             return;
         }
         this.report = save.retrieveReport(reportID); // retrieve report
+        if (this.report == null) {
+            return;
+        }
         this.editReport(); // display and edit report
         save.updateReport(this.report); // update edit if any
         System.out.println("Report saved.");

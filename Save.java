@@ -49,6 +49,7 @@ public class Save extends ReportDAO implements sqlDataMethods
             else
             {
                 System.out.println("No report found with ID " + Id);
+                return null;
             }
         } catch (SQLException e) {
             System.out.println("Error retrieving report: " + e.getMessage());
