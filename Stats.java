@@ -101,7 +101,7 @@ public class Stats {
     }
 
     public void displayReportsStartingFrom2020(){ //date is in a string and that's why it doesn't compare dates
-        System.out.println("Total number of reports starting from 2020: " + countRows("Reports", "Date", "Date > 12/31/2019"));
+        System.out.println("Total number of reports starting from 2020: " + countRows("Reports", "Date", "Date > '2019-12-31'"));
     }
 
     public void displayReportsWithMHIGreaterThan5(){
