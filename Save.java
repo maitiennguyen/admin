@@ -1,17 +1,23 @@
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Save extends ReportDAO implements sqlDataMethods
 {
     @Override
     public void saveReport(Report report)
     {
+        // change date string type to object type
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        LocalDate localDate = LocalDate.parse(report.getDate(), formatter);
+        Date date = Date.valueOf(localDate);
         try {
             String sql = "INSERT INTO Reports (Grad, MHI, MHIT, Date, IdentityYN, IdentityTxt, Location, EventD, AltID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             statement = conn.prepareStatement(sql);
             statement.setString(1, report.getGradYear());
             statement.setString(2, report.getMHI());
             statement.setString(3, report.getMHIText());
-            statement.setString(4, report.getDate());
+            statement.setDate(4, date);
             statement.setString(5, report.getIdentityYN());
             statement.setString(6, report.getIdentityText());
             statement.setString(7, report.getLocation());
