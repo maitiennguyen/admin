@@ -1,3 +1,5 @@
+import com.sun.security.jgss.GSSUtil;
+
 import java.sql.*;
 import java.util.Scanner;
 
@@ -12,6 +14,7 @@ public class Stats {
         displayReportsStartingFrom2020();
         displayReportsWithMHIGreaterThan5();
         displayReportsWhereIdentityWasAFactor();
+        displayMentalHealthAverage();
         System.out.println();
 
         filterYN();
@@ -96,6 +99,22 @@ public class Stats {
         return count;
     }
 
+    public double average(String tableName, String columnName) { //double because we don't know if the average will be whole
+        double average = 0;
+        String query = "SELECT AVG(" + columnName + ") FROM " + tableName;
+        ReportDAO.makeDBConnection();
+
+        try (PreparedStatement pstmt = ReportDAO.conn.prepareStatement(query)) {
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                average = rs.getDouble(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return average;
+    }
+
     public void displayAllReports(){ //displays the default number of statistics
         System.out.println("Total number of reports: " + countRows("Reports", "ID", "MHI > 0"));
     }
@@ -106,6 +125,10 @@ public class Stats {
 
     public void displayReportsWithMHIGreaterThan5(){
         System.out.println("Total number of reports with a mental health impact > 5: " + countRows("Reports", "ID", "MHI > 5"));
+    }
+
+    public void displayMentalHealthAverage(){
+        System.out.println("Mental Health Average: " + average("Reports", "MHI"));
     }
 
     public void displayReportsWhereIdentityWasAFactor(){
