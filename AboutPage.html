@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clickable Dropdown Text Button</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+		/* Style for the centered container */
+		body
+		{
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+
+		.container
+		{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			background-color: #f0f0f0
+		}
+        h1 {
+			font-size: 2rem;
+			margin-bottom: 4rem;
+		}
+		/* Style for the drop-down button */
+        .btn
+        {
+            position: relative;
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            padding: 1rem;
+            margin-bottom: 1.2rem;
+            text-align: center;
+            display: inline-block;
+            user-select: none;
+            border-radius: 6px;
+            z-index: 1;
+            width: 40%;
+        }
+
+        /* Style for the drop-down content */
+        .btn-content
+        {
+            display: none;
+            position: absolute;
+            background-color: #ecf0f1;
+            color: #444;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 2;
+            min-width: 180%;
+            padding: 12px;
+            top: 100%;
+            border-radius: 6px;
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 0;
+            max-width: 180%%;
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Shift to the left by half of its width */
+        }
+
+
+		/* Show the drop-down content when the user clicks on the button */
+		.btn.active .btn-content {
+			display: block;
+		}
+	</style>
+  <script>
+		window.addEventListener('load', function () {
+			// Get the drop-down button elements
+			var dropdowns = document.querySelectorAll('.btn');
+
+			// Add a click event listener to toggle the active class on the button
+			for (var i = 0; i < dropdowns.length; i++) {
+			  dropdowns[i].addEventListener('click', function (event) {
+				  event.stopPropagation();
+				  this.classList.toggle('active');
+			  });
+			}
+
+			// Add a click event listener to the document to close the drop-down when the user clicks outside of it
+			document.addEventListener('click', function (event) {
+			  for (var i = 0; i < dropdowns.length; i++) {
+			    if (!dropdowns[i].contains(event.target)) {
+			      dropdowns[i].classList.remove('active');
+			    }
+			  }
+			});
+		});
+	</script>
+</head>
+<body>
+
+<!-- Centered container for the drop-down buttons -->
+<div class="container">
+  <h1>About</h1>
+  <!-- Drop-down button -->
+  <div class="btn">
+    Why SRAS?
+    <div class="btn-content p">
+      <!-- Drop-down content goes here -->
+      Why SRAS?
+    </div>
+  </div>
+
+  <div class="btn">
+    Our Goals
+    <div class="btn-content p">
+      The goals of Student Reporting and Statistics is to foster a student community that has more transparency on its issues.
+    </div>
+  </div>
+
+  <div class="btn">
+    Data Usage
+    <div class="btn-content p">
+      Input from SRAS users will not require anyone to identify themselves or offenders. The data cannot be accessed by anyone other than Admin .
+    </div>
+  </div>
+
+  <div class="btn">
+    Founders and Current Team
+    <div class="btn-content p">
+      Judinelly Gonzalez (CS MAJOR C/O 2025), Mai Nguyen (CS MAJOR C/O 2024)
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
