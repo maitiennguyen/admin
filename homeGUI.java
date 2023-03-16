@@ -10,7 +10,7 @@ public class homeGUI extends GUIMethods{
     public homeGUI(){
         frame = new JFrame("SRAS");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //program ends when exit button is clicked
-        frame.setBounds(400,50, 700, 725);
+        frame.setBounds(500,50, 500, 650);
 
         //container where buttons and labels are added to
         Container homeContainer = frame.getContentPane();
@@ -21,24 +21,24 @@ public class homeGUI extends GUIMethods{
         //home label at the top of our window
         title = new JLabel("Home");
         title.setOpaque(true);
-        title.setBounds(310,40,400,60);
+        title.setBounds(209,30,200,30);
         title.setFont(titleFont);
 
         //buttons on home page
         JButton aboutButton = new JButton("About");
-        aboutButton.setBounds(250, 130, 200, 70);
+        aboutButton.setBounds(150, 90, 200, 70);
 
         JButton additionalResourcesButton = new JButton("Additional Resources");
-        additionalResourcesButton.setBounds(250, 230, 200, 70);
+        additionalResourcesButton.setBounds(150, 190, 200, 70);
 
         JButton campusStatisticsButton = new JButton("Campus Statistics");
-        campusStatisticsButton.setBounds(250, 330, 200, 70);
+        campusStatisticsButton.setBounds(150, 290, 200, 70);
 
         JButton fileReportButton = new JButton("File Report");
-        fileReportButton.setBounds(250, 430, 200, 70);
+        fileReportButton.setBounds(150, 390, 200, 70);
 
         JButton accessReportButton = new JButton("Access Report");
-        accessReportButton.setBounds(250, 530, 200, 70);
+        accessReportButton.setBounds(150, 490, 200, 70);
 
         //adding everything to this frame
         homeContainer.add(title);
