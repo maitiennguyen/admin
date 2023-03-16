@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class AccessReport extends FileReport{
+/*
     protected String reportID;
 
     public void showReport() {
@@ -62,4 +63,5 @@ public class AccessReport extends FileReport{
         }
         this.executeEdits();
     }
+*/
 }

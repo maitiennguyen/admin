@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.util.InputMismatchException;
 
 public class InputHandler {
+/*
     private Scanner scanner;
     private boolean chosen;
 
@@ -64,4 +65,5 @@ public class InputHandler {
         }
         return true;
     }
+*/
 }
