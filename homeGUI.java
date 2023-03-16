@@ -213,8 +213,7 @@ public class homeGUI extends GUIMethods{
                         }
 
                         else {
-                            contentPane.remove(errorMessage);
-                            fileReportPage.repaint();
+                            fileReportPage.dispose();
                             JFrame submitted = new JFrame("Report Submitted Successfully.");
                             submitted.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
                             submitted.setSize(300,200);
@@ -244,7 +243,6 @@ public class homeGUI extends GUIMethods{
                                 public void actionPerformed(ActionEvent e) {
                                     new homeGUI();
                                     submitted.dispose();
-                                    fileReportPage.dispose();
                                 }
                             });
                         }
