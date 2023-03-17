@@ -4,7 +4,7 @@ import java.awt.*;
 public class GUIMethods {
     public void about (JFrame aboutFrame){
         aboutFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        aboutFrame.setBounds(550,50, 400, 550);
+        aboutFrame.setBounds(500,50, 500, 650);
 
         Container aboutContainer = aboutFrame.getContentPane();
         aboutContainer.setLayout(null);
@@ -13,27 +13,31 @@ public class GUIMethods {
 
         JLabel aboutTitle = new JLabel("About");
         aboutTitle.setOpaque(true);
-        aboutTitle.setBounds(150, 40, 500, 30);
+        aboutTitle.setBounds(210, 30, 500, 30);
         aboutTitle.setFont(titleFont);
 
         //buttons in the about page
         JButton whySRASButton = new JButton("Why SRAS?");
-        whySRASButton.setBounds(100, 100, 200, 70);
+        whySRASButton.setBounds(150, 90, 200, 70);
 
         JButton ourGoalsButton = new JButton("Our Goals");
-        ourGoalsButton.setBounds(100, 200, 200, 70);
+        ourGoalsButton.setBounds(150, 190, 200, 70);
 
         JButton dataUsageButton = new JButton("Data Usage");
-        dataUsageButton.setBounds(100, 300, 200, 70);
+        dataUsageButton.setBounds(150, 290, 200, 70);
+
+        JButton FAQButton = new JButton("FAQ");
+        FAQButton.setBounds(150, 390,200, 70);
 
         JButton foundersAndCurrentTeamButton = new JButton("Founders and Current Team");
-        foundersAndCurrentTeamButton.setBounds(100, 400, 200, 70);
+        foundersAndCurrentTeamButton.setBounds(150, 490, 200, 70);
 
         //adding everything to the container
         aboutContainer.add(aboutTitle);
         aboutContainer.add(whySRASButton);
         aboutContainer.add(ourGoalsButton);
         aboutContainer.add(dataUsageButton);
+        aboutContainer.add(FAQButton);
         aboutContainer.add(foundersAndCurrentTeamButton);
 
         aboutFrame.setVisible(true);
