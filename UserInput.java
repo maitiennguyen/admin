@@ -42,22 +42,10 @@ public class UserInput {
 
     // make sure input is length 10
     public String reportID(String UserInput) {
-        String reportIDInput = null; // user input
-        String cancel = "cancel"; // cancel option
-        boolean isValid = false; // for while loop when input is not numeric or not 9 digits
-        while (!isValid) {
-            reportIDInput = UserInput;
-            reportIDInput = reportIDInput.toLowerCase();
-            if (reportIDInput.equals(cancel)) {
-                return cancel;
+            if (UserInput.length() != 10) { // make sure there are 9 digits
+                return null;
             }
-            if (reportIDInput.length() == 10) { // make sure there are 9 digits
-                isValid = true;
-            } else {
-                System.out.println("Invalid. Please try again with 10 characters.");
-            }
-        }
-        return reportIDInput;
+            return UserInput;
     }
 }
 
