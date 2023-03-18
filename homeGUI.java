@@ -408,7 +408,7 @@ public class homeGUI extends GUIMethods{
                                 }
                             });
 
-                            // add update button
+                            /// add update button
                             JButton submit = new JButton("Update");
                             submit.setBounds(575, 650, 75, 25);
                             contentPane.add(submit);
@@ -418,8 +418,10 @@ public class homeGUI extends GUIMethods{
                                     int error;
                                     errorMessage.setForeground(Color.red);
 
-                                    ReportCommandsInvoker reportError = new ReportCommandsInvoker();
-                                    error = reportError.createReport(answer1.getText(), answer2.getText(),(String) answer3.getSelectedItem(), answerText4.getText(), (String) answer5.getSelectedItem(), answerText6.getText(), answerText7.getText(), answerText8.getText());
+                                    ReportCommandsInvoker updateReport = new ReportCommandsInvoker();
+                                    error = updateReport.updateReport(report, answer1.getText(), answer2.getText(),(String) answer3.getSelectedItem(), answerText4.getText(), (String) answer5.getSelectedItem(), answerText6.getText(), answerText7.getText(), answerText8.getText());
+
+
                                     if (error == 1) {
                                         contentPane.remove(errorMessage);
                                         errorMessage.setText("Required. Must be in YYYY format and between 1900 and 2100.");
@@ -442,10 +444,6 @@ public class homeGUI extends GUIMethods{
                                         accessReportPage.repaint();
                                     }
                                     else {
-
-                                        Command update = new UpdateReportCommand(report, answer1.getText(), answer2.getText(),(String) answer3.getSelectedItem(), answerText4.getText(), (String) answer5.getSelectedItem(), answerText6.getText(), answerText7.getText(), answerText8.getText());
-                                        update.execute();
-
                                         contentPane.removeAll();
                                         accessReportPage.repaint();
 
@@ -469,6 +467,7 @@ public class homeGUI extends GUIMethods{
                                                 accessReportPage.dispose();
                                             }
                                         });
+
                                     }
                                 }
                             });

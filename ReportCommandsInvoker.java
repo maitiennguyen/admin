@@ -48,6 +48,29 @@ public class ReportCommandsInvoker {
         return 0;
     }
 
+    public int updateReport(Report report, String gradYear, String incidentDate, String mhi, String mhiT, String identityYN, String identityT, String location, String EventDes) {
+        this.report = new Report();
+
+        String year = userInput.year(gradYear);
+        if (year == null || year.isEmpty()) {
+            return 1;
+        }
+
+        String date = userInput.date(year, incidentDate);
+        if (date == null || date.isEmpty()) {
+            return 2;
+        }
+
+        if (mhi.isEmpty()) {
+            return 3;
+        }
+
+        Command updateReport = new UpdateReportCommand(report, gradYear, incidentDate, mhi, mhiT, identityYN, identityT, location, EventDes);
+        updateReport.execute();
+
+        return 0;
+    }
+
     public Report getReport() {
         return this.report;
     }
