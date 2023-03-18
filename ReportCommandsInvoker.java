@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
-public class FileReport {
-    protected Report report;
-    protected ArrayList<Command> commandList = new ArrayList<Command>();
-    protected UserInput userInput = new UserInput();
+public class ReportCommandsInvoker {
+    private Report report;
+    private ArrayList<Command> commandList = new ArrayList<Command>();
+    private UserInput userInput = new UserInput();
 
     public int createReport(String gradYear, String incidentDate, String mhi, String mhiT, String identityYN, String identityT, String location, String EventDes) {
         this.report = new Report();
@@ -34,22 +34,33 @@ public class FileReport {
         return 0;
     }
 
+    public int accessReport(String input) {
+        String reportID = userInput.reportID(input);
+        if (reportID == null) {
+            return 1;
+        }
+
+        this.report = new Save().retrieveReport(reportID);
+        if (this.report == null) {
+            return 2;
+        }
+
+        return 0;
+    }
+
     public Report getReport() {
         return this.report;
     }
 
-    protected void addEdit(Command edit) {
-        commandList.add(edit);
-    }
 
-    protected void executeEdits() {
+    private void executeEdits() {
         for (Command edit : commandList) {
             edit.execute();
         }
     }
 
     // generate random report ID String of length 10, case-sensitive
-    protected String generateID() { // https://www.geeksforgeeks.org/generate-random-string-of-given-size-in-java/
+    private String generateID() { // https://www.geeksforgeeks.org/generate-random-string-of-given-size-in-java/
         // choose a Character random from this String
         String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 + "0123456789";

@@ -188,7 +188,7 @@ public class homeGUI extends GUIMethods{
                         int error;
                         errorMessage.setForeground(Color.red);
 
-                        FileReport report = new FileReport();
+                        ReportCommandsInvoker report = new ReportCommandsInvoker();
                         error = report.createReport(answer1.getText(), answer2.getText(),(String) answer3.getSelectedItem(), answerText4.getText(), (String) answer5.getSelectedItem(), answerText6.getText(), answerText7.getText(), answerText8.getText());
                         if (error == 1) {
                             contentPane.remove(errorMessage);
@@ -286,7 +286,7 @@ public class homeGUI extends GUIMethods{
                         errorMessage.setForeground(Color.red);
 
                         // access report
-                        AccessReport retrievedReport = new AccessReport();
+                        ReportCommandsInvoker retrievedReport = new ReportCommandsInvoker();
                         error = retrievedReport.accessReport(answerID.getText());
                         if (error == 1) {
                             contentPane.remove(errorMessage);
@@ -415,32 +415,61 @@ public class homeGUI extends GUIMethods{
                             submit.addActionListener(new ActionListener() {
                                 @Override
                                 public void actionPerformed(ActionEvent e) {
-                                    Command update = new UpdateReportCommand(report, answer1.getText(), answer2.getText(),(String) answer3.getSelectedItem(), answerText4.getText(), (String) answer5.getSelectedItem(), answerText6.getText(), answerText7.getText(), answerText8.getText());
-                                    update.execute();
+                                    int error;
+                                    errorMessage.setForeground(Color.red);
 
-                                    contentPane.removeAll();
-                                    accessReportPage.repaint();
+                                    ReportCommandsInvoker reportError = new ReportCommandsInvoker();
+                                    error = reportError.createReport(answer1.getText(), answer2.getText(),(String) answer3.getSelectedItem(), answerText4.getText(), (String) answer5.getSelectedItem(), answerText6.getText(), answerText7.getText(), answerText8.getText());
+                                    if (error == 1) {
+                                        contentPane.remove(errorMessage);
+                                        errorMessage.setText("Required. Must be in YYYY format and between 1900 and 2100.");
+                                        errorMessage.setBounds(ax + 150, ay, aw, ah);
+                                        contentPane.add(errorMessage);
+                                        accessReportPage.repaint();
+                                    }
+                                    else if (error == 2) {
+                                        contentPane.remove(errorMessage);
+                                        errorMessage.setText("<html>Required. Must be in MM/dd/yyyy format.<br>Date should be today or within the past 20 years of graduation year.</html>");
+                                        errorMessage.setBounds(ax + 150, ay + dis - 30, aw + 100, ah + 50);
+                                        contentPane.add(errorMessage);
+                                        accessReportPage.repaint();
+                                    }
+                                    else if (error == 3) {
+                                        contentPane.remove(errorMessage);
+                                        errorMessage.setText("Required");
+                                        errorMessage.setBounds(ax + 100, ay + dis * 2, aw + 100, ah);
+                                        contentPane.add(errorMessage);
+                                        accessReportPage.repaint();
+                                    }
+                                    else {
 
-                                    JLabel updatedMessage = new JLabel();
-                                    updatedMessage.setText("Report Updated Successfully.");
-                                    Dimension labelSize = updatedMessage.getPreferredSize();
-                                    int centerX = accessReportPage.getWidth() / 2;
-                                    int centerY = accessReportPage.getHeight() / 2;
-                                    updatedMessage.setBounds(centerX - labelSize.width / 2, centerY - 30 - labelSize.height / 2, 200, labelSize.height);
+                                        Command update = new UpdateReportCommand(report, answer1.getText(), answer2.getText(),(String) answer3.getSelectedItem(), answerText4.getText(), (String) answer5.getSelectedItem(), answerText6.getText(), answerText7.getText(), answerText8.getText());
+                                        update.execute();
 
-                                    contentPane.add(updatedMessage);
+                                        contentPane.removeAll();
+                                        accessReportPage.repaint();
 
-                                    // Add button to return home
-                                    JButton returnHomeButton = new JButton("Back");
-                                    returnHomeButton.setBounds(centerX - labelSize.width / 2 + 60, centerY - labelSize.height / 2 + 20, 75, 25);
-                                    contentPane.add(returnHomeButton);
-                                    returnHomeButton.addActionListener(new ActionListener() {
-                                        @Override
-                                        public void actionPerformed(ActionEvent e) {
-                                            new homeGUI();
-                                            accessReportPage.dispose();
-                                        }
-                                    });
+                                        JLabel updatedMessage = new JLabel();
+                                        updatedMessage.setText("Report Updated Successfully.");
+                                        Dimension labelSize = updatedMessage.getPreferredSize();
+                                        int centerX = accessReportPage.getWidth() / 2;
+                                        int centerY = accessReportPage.getHeight() / 2;
+                                        updatedMessage.setBounds(centerX - labelSize.width / 2, centerY - 30 - labelSize.height / 2, 200, labelSize.height);
+
+                                        contentPane.add(updatedMessage);
+
+                                        // Add button to return home
+                                        JButton returnHomeButton = new JButton("Back");
+                                        returnHomeButton.setBounds(centerX - labelSize.width / 2 + 60, centerY - labelSize.height / 2 + 20, 75, 25);
+                                        contentPane.add(returnHomeButton);
+                                        returnHomeButton.addActionListener(new ActionListener() {
+                                            @Override
+                                            public void actionPerformed(ActionEvent e) {
+                                                new homeGUI();
+                                                accessReportPage.dispose();
+                                            }
+                                        });
+                                    }
                                 }
                             });
 
