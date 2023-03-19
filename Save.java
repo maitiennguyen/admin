@@ -13,7 +13,7 @@ public class Save extends ReportDAO implements sqlDataMethods
         LocalDate localDate = LocalDate.parse(report.getDate(), formatter);
         Date date = Date.valueOf(localDate);
         try {
-            String sql = "INSERT INTO Reports (Grad, MHI, MHIT, Date, IdentityYN, IdentityTxt, Location, EventD, AltID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO Reports (Grad, MHI, MHIT, Date, IdentityYN, IdentityTxt, Location, EventD, ID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             statement = conn.prepareStatement(sql);
             statement.setString(1, report.getGradYear());
             statement.setString(2, report.getMHI());
@@ -36,7 +36,7 @@ public class Save extends ReportDAO implements sqlDataMethods
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy"); //set the date format
         try
         {
-            String sql = "SELECT * FROM Reports WHERE AltID = ?";
+            String sql = "SELECT * FROM Reports WHERE ID = ?";
             statement = conn.prepareStatement(sql);
             statement.setString(1, Id);
             ResultSet resultSet = statement.executeQuery();
@@ -50,7 +50,7 @@ public class Save extends ReportDAO implements sqlDataMethods
                 report.setIdentityText(resultSet.getString("IdentityTxt"));
                 report.setLocation(resultSet.getString("Location"));
                 report.setEventDes(resultSet.getString("EventD"));
-                report.setId(resultSet.getString("AltID"));
+                report.setId(resultSet.getString("ID"));
                 System.out.println("Report retrieved successfully.");
                 return report;
             }
@@ -71,7 +71,7 @@ public class Save extends ReportDAO implements sqlDataMethods
         LocalDate localDate = LocalDate.parse(report.getDate(), formatter);
         Date date = Date.valueOf(localDate);
         try {
-            String sql = "UPDATE Reports SET Grad = ?, MHI = ?, MHIT = ?, Date = ?, IdentityYN = ?, IdentityTxt = ?, Location = ?, EventD = ? WHERE AltID = ?";
+            String sql = "UPDATE Reports SET Grad = ?, MHI = ?, MHIT = ?, Date = ?, IdentityYN = ?, IdentityTxt = ?, Location = ?, EventD = ? WHERE ID = ?";
             statement = conn.prepareStatement(sql);
             statement.setString(1, report.getGradYear());
             statement.setString(2, report.getMHI());
@@ -91,7 +91,7 @@ public class Save extends ReportDAO implements sqlDataMethods
 
     @Override
     public void deleteReport(String Id) {
-        String sql = "DELETE FROM Reports WHERE AltID = ?";
+        String sql = "DELETE FROM Reports WHERE ID = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, Id);
             pstmt.executeUpdate();
