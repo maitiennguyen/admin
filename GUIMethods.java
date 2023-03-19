@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GUIMethods {
     public void about (JFrame aboutFrame){
@@ -32,6 +34,10 @@ public class GUIMethods {
         JButton foundersAndCurrentTeamButton = new JButton("Founders and Current Team");
         foundersAndCurrentTeamButton.setBounds(150, 490, 200, 70);
 
+        // Add button to return home
+        JButton returnHomeButton = new JButton("Back");
+        returnHomeButton.setBounds(1, 1, 75, 25);
+
         //adding everything to the container
         aboutContainer.add(aboutTitle);
         aboutContainer.add(whySRASButton);
@@ -39,6 +45,15 @@ public class GUIMethods {
         aboutContainer.add(dataUsageButton);
         aboutContainer.add(FAQButton);
         aboutContainer.add(foundersAndCurrentTeamButton);
+        aboutContainer.add(returnHomeButton);
+
+        returnHomeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new homeGUI();
+                aboutFrame.dispose();
+            }
+        });
 
         aboutFrame.setVisible(true);
     }
@@ -64,10 +79,160 @@ public class GUIMethods {
         JButton offCampusResourcesButton = new JButton("Off Campus Resources");
         offCampusResourcesButton.setBounds(100, 250, 200, 70);
 
+        // Add button to return home
+        JButton returnHomeButton = new JButton("Back");
+        returnHomeButton.setBounds(1, 1, 75, 25);
+
         //adding everything to the container
         addResourcesContainer.add(ARTitle);
         addResourcesContainer.add(onCampusResourcesButton);
         addResourcesContainer.add(offCampusResourcesButton);
+        addResourcesContainer.add(returnHomeButton);
+
+        returnHomeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new homeGUI();
+                addResourcesFrame.dispose();
+            }
+        });
+
+        onCampusResourcesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ARTitle.setText("On Campus Resources");
+                ARTitle.setBounds(50, 40, 500, 30);
+                addResourcesContainer.remove(onCampusResourcesButton);
+                addResourcesContainer.remove(offCampusResourcesButton);
+                addResourcesContainer.remove(returnHomeButton);
+                addResourcesFrame.repaint();
+
+                //buttons in the additional resources page
+                JButton campusSafety = new JButton("Campus Safety");
+                campusSafety.setBounds(100, 150, 200, 70);
+
+                JButton titleIVOffice = new JButton("Title IV Office");
+                titleIVOffice.setBounds(100, 250, 200, 70);
+
+                JButton counselingCenter = new JButton("Counseling Center");
+                counselingCenter.setBounds(100, 350, 200, 70);
+
+                // Add button to return home
+                JButton returnAddRe = new JButton("Back");
+                returnAddRe.setBounds(1, 1, 75, 25);
+
+
+                addResourcesContainer.add(campusSafety);
+                addResourcesContainer.add(titleIVOffice);
+                addResourcesContainer.add(counselingCenter);
+                addResourcesFrame.add(returnAddRe);
+
+                returnAddRe.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        JFrame returnAD = new JFrame("Additional Resources");
+                        additionalResources(returnAD);
+                        addResourcesFrame.dispose();
+                    }
+                });
+
+                campusSafety.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        ARTitle.setText("Campus Safety");
+                        ARTitle.setBounds(250, 40, 500, 30);
+                        addResourcesContainer.remove(campusSafety);
+                        addResourcesContainer.remove(titleIVOffice);
+                        addResourcesContainer.remove(counselingCenter);
+                        addResourcesFrame.repaint();
+
+                        addResourcesFrame.setBounds(400,50, 700, 725);
+                        JTextArea campusSafetyTextArea = new JTextArea(new AdditionalResources().campusSafetyDescription);
+                        campusSafetyTextArea.setBounds(5,100,690, 300);
+                        campusSafetyTextArea.setLineWrap(true);
+                        campusSafetyTextArea.setWrapStyleWord(true);
+                        campusSafetyTextArea.setEditable(false);
+                        addResourcesContainer.add(campusSafetyTextArea);
+                    }
+                });
+
+                titleIVOffice.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        ARTitle.setText("Title IV Office");
+                        ARTitle.setBounds(250, 40, 500, 30);
+                        addResourcesContainer.remove(campusSafety);
+                        addResourcesContainer.remove(titleIVOffice);
+                        addResourcesContainer.remove(counselingCenter);
+                        addResourcesFrame.repaint();
+
+                        addResourcesFrame.setBounds(400,50, 700, 725);
+                        JTextArea campusSafetyTextArea = new JTextArea(new AdditionalResources().titleIVOfficeDescription);
+                        campusSafetyTextArea.setBounds(5,100,690, 400);
+                        campusSafetyTextArea.setLineWrap(true);
+                        campusSafetyTextArea.setWrapStyleWord(true);
+                        campusSafetyTextArea.setEditable(false);
+                        addResourcesContainer.add(campusSafetyTextArea);
+                    }
+                });
+
+                counselingCenter.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        ARTitle.setText("Counseling Center");
+                        ARTitle.setBounds(250, 40, 500, 30);
+                        addResourcesContainer.remove(campusSafety);
+                        addResourcesContainer.remove(titleIVOffice);
+                        addResourcesContainer.remove(counselingCenter);
+                        addResourcesFrame.repaint();
+
+                        addResourcesFrame.setBounds(400,50, 700, 725);
+                        JTextArea campusSafetyTextArea = new JTextArea(new AdditionalResources().counselingCenterDescription);
+                        campusSafetyTextArea.setBounds(5,100,690, 600);
+                        campusSafetyTextArea.setLineWrap(true);
+                        campusSafetyTextArea.setWrapStyleWord(true);
+                        campusSafetyTextArea.setEditable(false);
+                        addResourcesContainer.add(campusSafetyTextArea);
+                    }
+                });
+
+            }
+        });
+
+        offCampusResourcesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ARTitle.setText("Off Campus Resources");
+                ARTitle.setBounds(200, 40, 500, 30);
+                addResourcesContainer.remove(onCampusResourcesButton);
+                addResourcesContainer.remove(offCampusResourcesButton);
+                addResourcesFrame.repaint();
+
+                addResourcesFrame.setBounds(400,50, 700, 725);
+                JTextArea offCampusTextArea = new JTextArea("Colorado Springs Police Department\nhttps://coloradosprings.gov/gocos\n(719) 444-7000");
+                offCampusTextArea.setBounds(5,100,690, 600);
+                offCampusTextArea.setLineWrap(true);
+                offCampusTextArea.setWrapStyleWord(true);
+                offCampusTextArea.setEditable(false);
+                addResourcesContainer.add(offCampusTextArea);
+
+                // Add button to return home
+                JButton returnAddRe = new JButton("Back");
+                returnAddRe.setBounds(1, 1, 75, 25);
+                addResourcesFrame.add(returnAddRe);
+
+                returnAddRe.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        JFrame returnAD = new JFrame("Additional Resources");
+                        additionalResources(returnAD);
+                        addResourcesFrame.dispose();
+                    }
+                });
+
+
+            }
+        });
 
         addResourcesFrame.setVisible(true);
     }
