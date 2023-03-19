@@ -206,6 +206,7 @@ public class GUIMethods {
                 ARTitle.setBounds(200, 40, 500, 30);
                 addResourcesContainer.remove(onCampusResourcesButton);
                 addResourcesContainer.remove(offCampusResourcesButton);
+                addResourcesContainer.remove(returnHomeButton);
                 addResourcesFrame.repaint();
 
                 addResourcesFrame.setBounds(400,50, 700, 725);
