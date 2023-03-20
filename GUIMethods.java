@@ -66,9 +66,23 @@ public class GUIMethods {
                 aboutContainer.remove(dataUsageButton);
                 aboutContainer.remove(FAQButton);
                 aboutContainer.remove(foundersAndCurrentTeamButton);
+                aboutContainer.remove(returnHomeButton);
                 aboutFrame.repaint();
 
                 aboutFrame.setBounds(500,50, 500, 500);
+
+                // Add button to return to About
+                JButton returnAbout = new JButton("Back");
+                returnAbout.setBounds(1, 1, 75, 25);
+                aboutFrame.add(returnAbout);
+                returnAbout.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        JFrame returnA = new JFrame("About");
+                        about(returnA);
+                        aboutFrame.dispose();
+                    }
+                });
 
                 //first text field
                 JTextArea whySRASTextField1 = new JTextArea(new About().whySRASDescription);
@@ -91,9 +105,23 @@ public class GUIMethods {
                 aboutContainer.remove(dataUsageButton);
                 aboutContainer.remove(FAQButton);
                 aboutContainer.remove(foundersAndCurrentTeamButton);
+                aboutContainer.remove(returnHomeButton);
                 aboutFrame.repaint();
 
                 aboutFrame.setBounds(500,50, 500, 500);
+
+                // Add button to return to About
+                JButton returnAbout = new JButton("Back");
+                returnAbout.setBounds(1, 1, 75, 25);
+                aboutFrame.add(returnAbout);
+                returnAbout.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        JFrame returnA = new JFrame("About");
+                        about(returnA);
+                        aboutFrame.dispose();
+                    }
+                });
 
                 //first text field
                 JTextArea ourGoalsTextField1 = new JTextArea(new About().ourGoalsDescription);
@@ -116,9 +144,23 @@ public class GUIMethods {
                 aboutContainer.remove(dataUsageButton);
                 aboutContainer.remove(FAQButton);
                 aboutContainer.remove(foundersAndCurrentTeamButton);
+                aboutContainer.remove(returnHomeButton);
                 aboutFrame.repaint();
 
                 aboutFrame.setBounds(500,50, 500, 500);
+
+                // Add button to return to About
+                JButton returnAbout = new JButton("Back");
+                returnAbout.setBounds(1, 1, 75, 25);
+                aboutFrame.add(returnAbout);
+                returnAbout.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        JFrame returnA = new JFrame("About");
+                        about(returnA);
+                        aboutFrame.dispose();
+                    }
+                });
 
                 //first text field
                 JTextArea dataUsageTextField1 = new JTextArea(new About().dataUsageDescription);
@@ -141,9 +183,23 @@ public class GUIMethods {
                 aboutContainer.remove(dataUsageButton);
                 aboutContainer.remove(FAQButton);
                 aboutContainer.remove(foundersAndCurrentTeamButton);
+                aboutContainer.remove(returnHomeButton);
                 aboutFrame.repaint();
 
                 aboutFrame.setBounds(500,50, 500, 720);
+
+                // Add button to return to About
+                JButton returnAbout = new JButton("Back");
+                returnAbout.setBounds(1, 1, 75, 25);
+                aboutFrame.add(returnAbout);
+                returnAbout.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        JFrame returnA = new JFrame("About");
+                        about(returnA);
+                        aboutFrame.dispose();
+                    }
+                });
 
                 //first text field
                 JTextArea FAQTextField1 = new JTextArea(new About().howToNavigateHeading + new About().howToNavigateDescription);
@@ -190,9 +246,23 @@ public class GUIMethods {
                 aboutContainer.remove(dataUsageButton);
                 aboutContainer.remove(FAQButton);
                 aboutContainer.remove(foundersAndCurrentTeamButton);
+                aboutContainer.remove(returnHomeButton);
                 aboutFrame.repaint();
 
                 aboutFrame.setBounds(500,50, 500, 400);
+
+                // Add button to return to About
+                JButton returnAbout = new JButton("Back");
+                returnAbout.setBounds(1, 1, 75, 25);
+                aboutFrame.add(returnAbout);
+                returnAbout.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        JFrame returnA = new JFrame("About");
+                        about(returnA);
+                        aboutFrame.dispose();
+                    }
+                });
 
                 //first text field
                 JTextArea foundersAndCurrTeamDescription = new JTextArea(new About().foundersAndCurrentTeamDescription);
@@ -408,7 +478,6 @@ public class GUIMethods {
                         addResourcesFrame.dispose();
                     }
                 });
-
 
             }
         });
