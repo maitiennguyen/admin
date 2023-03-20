@@ -455,6 +455,28 @@ public class GUIMethods {
             }
         });
 
+        generalStatsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                campusStatsTitle.setText("General Campus Statistics");
+                campusStatsTitle.setBounds(80, 30, 500, 50);
+                campusStatsContainer.remove(generalStatsButton);
+                campusStatsContainer.remove(heatMapButton);
+                campusStatsFrame.repaint();
+
+                campusStatsFrame.setBounds(500,50, 500, 500);
+
+                //first text field
+                JTextArea generalStatsTextField = new JTextArea();
+                generalStatsTextField.setBounds(0,80,500, 300);
+                generalStatsTextField.setLineWrap(true);
+                generalStatsTextField.setWrapStyleWord(true);
+                generalStatsTextField.setEditable(false);
+
+                campusStatsContainer.add(generalStatsTextField);
+            }
+        });
+
         campusStatsFrame.setVisible(true);
     }
 
