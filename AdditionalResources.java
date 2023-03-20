@@ -80,6 +80,19 @@ public class AdditionalResources extends MoreInfo{
             "Want to know more? Explore the Counseling Center page on the Colorado College website. " +
             "(direct link here: https://www.coloradocollege.edu/offices/counseling/) \n";
 
+    String otherOnCampusResourcesDescription =
+            "- RAVE (Anonymous and Confidential from everyone but those that monitor the app)\n" +
+            "- Sexual Assault Response Coordinator (Confidential)\n" +
+            "- Chaplain's Office (Confidential)\n" +
+            "- Ombuds Office (Confidential)\n" +
+            "- Employee Assistance Program (Confidential)\n" +
+            "- On-Demand Crisis Counseling (Confidential)\n" +
+            "- The Butler Center (Private but not confidential)\n";
+
+    String offCampusDescription = "CC offers references to off campus therapists and prescribers. " +
+            "There's a data base that CC students can simply click on. (direct link: coloradocollege.thrivingcampus.com)\n" +
+            "\n" +
+            "Colorado Springs Police Department\nhttps://coloradosprings.gov/gocos\n(719) 444-7000";
 
     @Override
     public void displayAllInfo() {

@@ -15,7 +15,8 @@ public class GUIMethods {
 
         JLabel aboutTitle = new JLabel("About");
         aboutTitle.setOpaque(true);
-        aboutTitle.setBounds(210, 30, 500, 30);
+        aboutTitle.setBounds(210, 30, 500, 40)
+        ;
         aboutTitle.setFont(titleFont);
 
         //buttons in the about page
@@ -52,6 +53,155 @@ public class GUIMethods {
             public void actionPerformed(ActionEvent e) {
                 new homeGUI();
                 aboutFrame.dispose();
+            }
+        });
+
+        whySRASButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                aboutTitle.setText("Why SRAS?");
+                aboutTitle.setBounds(160, 30, 500, 50);
+                aboutContainer.remove(whySRASButton);
+                aboutContainer.remove(ourGoalsButton);
+                aboutContainer.remove(dataUsageButton);
+                aboutContainer.remove(FAQButton);
+                aboutContainer.remove(foundersAndCurrentTeamButton);
+                aboutFrame.repaint();
+
+                aboutFrame.setBounds(500,50, 500, 500);
+
+                //first text field
+                JTextArea whySRASTextField1 = new JTextArea(new About().whySRASDescription);
+                whySRASTextField1.setBounds(0,80,500, 150);
+                whySRASTextField1.setLineWrap(true);
+                whySRASTextField1.setWrapStyleWord(true);
+                whySRASTextField1.setEditable(false);
+
+                aboutContainer.add(whySRASTextField1);
+            }
+        });
+
+        ourGoalsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                aboutTitle.setText("Our Goals");
+                aboutTitle.setBounds(190, 40, 500, 50);
+                aboutContainer.remove(whySRASButton);
+                aboutContainer.remove(ourGoalsButton);
+                aboutContainer.remove(dataUsageButton);
+                aboutContainer.remove(FAQButton);
+                aboutContainer.remove(foundersAndCurrentTeamButton);
+                aboutFrame.repaint();
+
+                aboutFrame.setBounds(500,50, 500, 500);
+
+                //first text field
+                JTextArea ourGoalsTextField1 = new JTextArea(new About().ourGoalsDescription);
+                ourGoalsTextField1.setBounds(0,90,500, 300);
+                ourGoalsTextField1.setLineWrap(true);
+                ourGoalsTextField1.setWrapStyleWord(true);
+                ourGoalsTextField1.setEditable(false);
+
+                aboutContainer.add(ourGoalsTextField1);
+            }
+        });
+
+        dataUsageButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                aboutTitle.setText("Data Usage");
+                aboutTitle.setBounds(170, 30, 500, 50);
+                aboutContainer.remove(whySRASButton);
+                aboutContainer.remove(ourGoalsButton);
+                aboutContainer.remove(dataUsageButton);
+                aboutContainer.remove(FAQButton);
+                aboutContainer.remove(foundersAndCurrentTeamButton);
+                aboutFrame.repaint();
+
+                aboutFrame.setBounds(500,50, 500, 500);
+
+                //first text field
+                JTextArea dataUsageTextField1 = new JTextArea(new About().dataUsageDescription);
+                dataUsageTextField1.setBounds(0,90,500, 150);
+                dataUsageTextField1.setLineWrap(true);
+                dataUsageTextField1.setWrapStyleWord(true);
+                dataUsageTextField1.setEditable(false);
+
+                aboutContainer.add(dataUsageTextField1);
+            }
+        });
+
+        FAQButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                aboutTitle.setText("FAQ");
+                aboutTitle.setBounds(220, 40, 500, 30);
+                aboutContainer.remove(whySRASButton);
+                aboutContainer.remove(ourGoalsButton);
+                aboutContainer.remove(dataUsageButton);
+                aboutContainer.remove(FAQButton);
+                aboutContainer.remove(foundersAndCurrentTeamButton);
+                aboutFrame.repaint();
+
+                aboutFrame.setBounds(500,50, 500, 720);
+
+                //first text field
+                JTextArea FAQTextField1 = new JTextArea(new About().howToNavigateHeading + new About().howToNavigateDescription);
+                FAQTextField1.setBounds(0,80,500, 135);
+                FAQTextField1.setLineWrap(true);
+                FAQTextField1.setWrapStyleWord(true);
+                FAQTextField1.setEditable(false);
+
+                //second text field
+                JTextArea FAQTextField2 = new JTextArea(new About().howDoIFileAReportHeading + new About().howDoIFileAReportDescription);
+                FAQTextField2.setBounds(0,225,500, 153);
+                FAQTextField2.setLineWrap(true);
+                FAQTextField2.setWrapStyleWord(true);
+                FAQTextField2.setEditable(false);
+
+                //third text field
+                JTextArea FAQTextField3 = new JTextArea(new About().howDoIReAccessAReportHeading+ new About().howDoIReAccessAReportDescription);
+                FAQTextField3.setBounds(0,388,500, 135);
+                FAQTextField3.setLineWrap(true);
+                FAQTextField3.setWrapStyleWord(true);
+                FAQTextField3.setEditable(false);
+
+                //fourth text field
+                JTextArea FAQTextField4 = new JTextArea(new About().howCurrentAreTheStatisticsHeading + new About().howCurrentAreTheStatisticsDescription);
+                FAQTextField4.setBounds(0,533,500, 73);
+                FAQTextField4.setLineWrap(true);
+                FAQTextField4.setWrapStyleWord(true);
+                FAQTextField4.setEditable(false);
+
+                aboutContainer.add(FAQTextField1);
+                aboutContainer.add(FAQTextField2);
+                aboutContainer.add(FAQTextField3);
+                aboutContainer.add(FAQTextField4);
+            }
+        });
+
+        foundersAndCurrentTeamButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                aboutTitle.setText("Founders and Current Team");
+                aboutTitle.setBounds(70, 40, 500, 30);
+                aboutContainer.remove(whySRASButton);
+                aboutContainer.remove(ourGoalsButton);
+                aboutContainer.remove(dataUsageButton);
+                aboutContainer.remove(FAQButton);
+                aboutContainer.remove(foundersAndCurrentTeamButton);
+                aboutFrame.repaint();
+
+                aboutFrame.setBounds(500,50, 500, 400);
+
+                //first text field
+                JTextArea foundersAndCurrTeamDescription = new JTextArea(new About().foundersAndCurrentTeamDescription);
+                foundersAndCurrTeamDescription.setBounds(0,80,500, 150);
+                foundersAndCurrTeamDescription.setLineWrap(true);
+                foundersAndCurrTeamDescription.setWrapStyleWord(true);
+                foundersAndCurrTeamDescription.setEditable(false);
+
+                aboutContainer.add(foundersAndCurrTeamDescription);
             }
         });
 
@@ -106,6 +256,7 @@ public class GUIMethods {
                 addResourcesContainer.remove(offCampusResourcesButton);
                 addResourcesContainer.remove(returnHomeButton);
                 addResourcesFrame.repaint();
+                addResourcesFrame.setBounds(550,50, 400, 650);
 
                 //buttons in the additional resources page
                 JButton campusSafety = new JButton("Campus Safety");
@@ -117,14 +268,17 @@ public class GUIMethods {
                 JButton counselingCenter = new JButton("Counseling Center");
                 counselingCenter.setBounds(100, 350, 200, 70);
 
+                JButton otherOnCampusResources = new JButton("Other On Campus Resources");
+                otherOnCampusResources.setBounds(100, 450, 200, 70);
+
                 // Add button to return home
                 JButton returnAddRe = new JButton("Back");
                 returnAddRe.setBounds(1, 1, 75, 25);
 
-
                 addResourcesContainer.add(campusSafety);
                 addResourcesContainer.add(titleIVOffice);
                 addResourcesContainer.add(counselingCenter);
+                addResourcesContainer.add(otherOnCampusResources);
                 addResourcesFrame.add(returnAddRe);
 
                 returnAddRe.addActionListener(new ActionListener() {
@@ -144,11 +298,12 @@ public class GUIMethods {
                         addResourcesContainer.remove(campusSafety);
                         addResourcesContainer.remove(titleIVOffice);
                         addResourcesContainer.remove(counselingCenter);
+                        addResourcesContainer.remove(otherOnCampusResources);
                         addResourcesFrame.repaint();
 
                         addResourcesFrame.setBounds(400,50, 700, 725);
                         JTextArea campusSafetyTextArea = new JTextArea(new AdditionalResources().campusSafetyDescription);
-                        campusSafetyTextArea.setBounds(5,100,690, 300);
+                        campusSafetyTextArea.setBounds(0,100,700, 300);
                         campusSafetyTextArea.setLineWrap(true);
                         campusSafetyTextArea.setWrapStyleWord(true);
                         campusSafetyTextArea.setEditable(false);
@@ -164,11 +319,12 @@ public class GUIMethods {
                         addResourcesContainer.remove(campusSafety);
                         addResourcesContainer.remove(titleIVOffice);
                         addResourcesContainer.remove(counselingCenter);
+                        addResourcesContainer.remove(otherOnCampusResources);
                         addResourcesFrame.repaint();
 
                         addResourcesFrame.setBounds(400,50, 700, 725);
                         JTextArea campusSafetyTextArea = new JTextArea(new AdditionalResources().titleIVOfficeDescription);
-                        campusSafetyTextArea.setBounds(5,100,690, 400);
+                        campusSafetyTextArea.setBounds(0,100,700, 400);
                         campusSafetyTextArea.setLineWrap(true);
                         campusSafetyTextArea.setWrapStyleWord(true);
                         campusSafetyTextArea.setEditable(false);
@@ -184,11 +340,33 @@ public class GUIMethods {
                         addResourcesContainer.remove(campusSafety);
                         addResourcesContainer.remove(titleIVOffice);
                         addResourcesContainer.remove(counselingCenter);
+                        addResourcesContainer.remove(otherOnCampusResources);
                         addResourcesFrame.repaint();
 
                         addResourcesFrame.setBounds(400,50, 700, 725);
                         JTextArea campusSafetyTextArea = new JTextArea(new AdditionalResources().counselingCenterDescription);
-                        campusSafetyTextArea.setBounds(5,100,690, 600);
+                        campusSafetyTextArea.setBounds(0,100,700, 600);
+                        campusSafetyTextArea.setLineWrap(true);
+                        campusSafetyTextArea.setWrapStyleWord(true);
+                        campusSafetyTextArea.setEditable(false);
+                        addResourcesContainer.add(campusSafetyTextArea);
+                    }
+                });
+
+                otherOnCampusResources.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        ARTitle.setText("Other On Campus Resources");
+                        ARTitle.setBounds(25, 40, 450, 30);
+                        addResourcesContainer.remove(campusSafety);
+                        addResourcesContainer.remove(titleIVOffice);
+                        addResourcesContainer.remove(counselingCenter);
+                        addResourcesContainer.remove(otherOnCampusResources);
+                        addResourcesFrame.repaint();
+
+                        addResourcesFrame.setBounds(525,50, 450, 600);
+                        JTextArea campusSafetyTextArea = new JTextArea(new AdditionalResources().otherOnCampusResourcesDescription);
+                        campusSafetyTextArea.setBounds(0,100,450, 300);
                         campusSafetyTextArea.setLineWrap(true);
                         campusSafetyTextArea.setWrapStyleWord(true);
                         campusSafetyTextArea.setEditable(false);
@@ -210,8 +388,8 @@ public class GUIMethods {
                 addResourcesFrame.repaint();
 
                 addResourcesFrame.setBounds(400,50, 700, 725);
-                JTextArea offCampusTextArea = new JTextArea("Colorado Springs Police Department\nhttps://coloradosprings.gov/gocos\n(719) 444-7000");
-                offCampusTextArea.setBounds(5,100,690, 600);
+                JTextArea offCampusTextArea = new JTextArea(new AdditionalResources().offCampusDescription);
+                offCampusTextArea.setBounds(0,100,700, 600);
                 offCampusTextArea.setLineWrap(true);
                 offCampusTextArea.setWrapStyleWord(true);
                 offCampusTextArea.setEditable(false);
