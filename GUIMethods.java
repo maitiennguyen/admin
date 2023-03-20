@@ -1,7 +1,11 @@
+import javax.sql.rowset.CachedRowSet;
+import javax.sql.rowset.RowSetFactory;
+import javax.sql.rowset.RowSetProvider;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class GUIMethods {
     public void about (JFrame aboutFrame){
@@ -532,20 +536,8 @@ public class GUIMethods {
                 campusStatsContainer.remove(generalStatsButton);
                 campusStatsContainer.remove(heatMapButton);
                 campusStatsFrame.repaint();
-
-                campusStatsFrame.setBounds(500,50, 500, 500);
-
-                //first text field
-                JTextArea generalStatsTextField = new JTextArea();
-                generalStatsTextField.setBounds(0,80,500, 300);
-                generalStatsTextField.setLineWrap(true);
-                generalStatsTextField.setWrapStyleWord(true);
-                generalStatsTextField.setEditable(false);
-
-                campusStatsContainer.add(generalStatsTextField);
             }
         });
-
         campusStatsFrame.setVisible(true);
     }
 
