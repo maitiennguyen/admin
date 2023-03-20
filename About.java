@@ -1,18 +1,37 @@
 public class About extends MoreInfo{
     String title = "About";
-    String howToNavigateHeading = "How do you navigate the Student Reports & Statistics platform?";
+    String whySRASDescription = "Our team created Student Reports and Statistics (SRAS) for college students to anonymously " +
+            "report and track data on crime and sexual harassment activity that has occurred on campus. SRAS aims to provide " +
+            "transparent information and report tracking for students to ensure that all students have access to accurate and " +
+            "relevant information about campus safety.";
+    String ourGoalsDescription = "Our primary goal is to improve campus safety by empowering students with the knowledge and " +
+            "resources they need to make informed decisions about their activities.";
+    String dataUsageDescription = "We will use the data to...";
+    String foundersAndCurrentTeamDescription = "Our current team consists of its three founders: Judinelly Gonzalez " +
+            "(class of 2025), Mai Nguyen (class of 2026), and Whitner Reichman (class of 2026)";
+    String howToNavigateHeading = "How do I navigate the Student Reports & Statistics platform? \n";
     //use '%n' when I want a new line in terminal
-    String howToNavigateDescription = "When a user uses the SRAS platform, a home page will appear and they will have the " +
-            "option to input which of the six features they would like to access. %nIf the user inputs 1, they will access " +
-            "Campus Statistics; if the user inputs 2, they will access Additional Resources; if the user inputs 3, they will access " +
-            "%nAbout (the current option you are in); if the user inputs 4, they will access File Report; if the user " +
-            "inputs 5, they will access Access Report; and if the %nuser inputs 6, they will quit the entire program. \n" +
-            "\n" +
-            "Once the user has inputted their number to access one of the five features, they will be shown what’s in that " +
-            "specific feature. The user then has to %nreload the program to access a different feature. \n" +
-            "\n" +
-            "It is important to note that a few of the features (File Report and Access Report) have very specific user input " +
-            "formatting. Simply follow the instructions %nthat are displayed for you when navigating through those features.";
+    String howToNavigateDescription = "\nWhen a user uses the SRAS platform, a home page will appear and they will have the " +
+            "option to click on one of five buttons. The user should then click on the button of their liking to explore what that " +
+            "page has to offer. Whenever the user has finished viewing or interacting with the page they're in, all they have to " +
+            "do is click the back button or exit the program altogether. It is a pretty user friendly program.";
+
+    String howDoIFileAReportHeading = "How do I file a report? \n";
+    String howDoIFileAReportDescription = "\nAfter the program loads and displays the SRAS’ home page, the user must click on " +
+            "the ‘File Report’ button. The program will then take them to our ‘File Report’ page and the user must answer " +
+            "all the fields that have a star next to them (a total of three fields). The user will then decide to answer " +
+            "any of the other fields or leave them blank. Once done, the user must click on the ‘Submit’ button at the " +
+            "bottom of the page. A random Report ID will be generated and the user must save this ID somewhere in order " +
+            "to later re-access their report.";
+    String howDoIReAccessAReportHeading = "How do I re-access a report? \n";
+    String howDoIReAccessAReportDescription = "\nAfter the program loads and displays the SRAS’ home page, the user must " +
+            "click on the ‘Access Report’ button. The program will then take them to our Access Report’ page and the " +
+            "user must enter the Report ID that was generated for them after having submitted a report. If the user " +
+            "has the correct ID, then it will display their previously submitted report and allow them to edit/check " +
+            "their report. If not, then it will give them an error message to try again.\n";
+    String howCurrentAreTheStatisticsHeading = "How current are SRAS' statistics? \n";
+    String howCurrentAreTheStatisticsDescription = "\nOur statistics automatically update every time someone submits a " +
+            "report. We’ve set up our statistics to reflect that. ";
 
     @Override
     public void displayAllInfo() {

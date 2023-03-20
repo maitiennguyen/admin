@@ -132,7 +132,7 @@ public class Stats {
     }
 
     public void displayReportsWhereIdentityWasAFactor(){
-        System.out.println("Total number of reports where identity was a factor: " + countRows("Reports", "IdentityYN", "IdentityYN = 'y'"));
+        System.out.println("Total number of reports where identity was a factor: " + countRows("Reports", "IdentityYN", "IdentityYN = 'Yes'"));
     }
 
 //    public String getFilterInput(){
