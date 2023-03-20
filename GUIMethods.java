@@ -418,10 +418,42 @@ public class GUIMethods {
 
     public void campusStats(JFrame campusStatsFrame){
         campusStatsFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        campusStatsFrame.setBounds(400,50, 700, 725);
+        campusStatsFrame.setBounds(500,50, 500, 450);
 
         Container campusStatsContainer = campusStatsFrame.getContentPane();
         campusStatsContainer.setLayout(null);
+
+        Font titleFont = new Font("Arial",Font.PLAIN, 30);
+
+        JLabel campusStatsTitle = new JLabel("Campus Statistics");
+        campusStatsTitle.setOpaque(true);
+        campusStatsTitle.setBounds(130, 40, 500, 30);
+        campusStatsTitle.setFont(titleFont);
+
+        //buttons in the campus statistics page
+        JButton generalStatsButton = new JButton("General SRAS Statistics");
+        generalStatsButton.setBounds(150, 150, 200, 70);
+
+        JButton heatMapButton = new JButton("Heat Map");
+        heatMapButton.setBounds(150, 250, 200, 70);
+
+        //Add button to return home
+        JButton returnHomeButton = new JButton("Back");
+        returnHomeButton.setBounds(1, 1, 75, 25);
+
+        //adding everything to the container
+        campusStatsContainer.add(campusStatsTitle);
+        campusStatsContainer.add(generalStatsButton);
+        campusStatsContainer.add(heatMapButton);
+        campusStatsContainer.add(returnHomeButton);
+
+        returnHomeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new homeGUI();
+                campusStatsFrame.dispose();
+            }
+        });
 
         campusStatsFrame.setVisible(true);
     }
