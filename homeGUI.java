@@ -98,50 +98,50 @@ public class homeGUI extends GUIMethods{
                 Container contentPane = fileReportPage.getContentPane();
 
                 // Add questions
-                JLabel question1 = new JLabel("*Graduation Date (YYYY)");
+                JLabel question1 = new JLabel("<html>Graduation Date (YYYY) <span style= color:red>*<small>Required</small></span></html>");
                 question1.setBounds(qx, qy, qw, qh);
                 JTextField answer1 = new JTextField();
                 answer1.setBounds(ax, ay, aw/4, ah);
 
-                JLabel question2 = new JLabel("*Date (MM/dd/yyyy)");
+                JLabel question2 = new JLabel("<html>Date of Incident (MM/dd/yyyy) <span style= color:red>*<small>Required</small></span></html>");
                 question2.setBounds(qx, qy + dis, qw, qh);
                 JTextField answer2 = new JTextField();
                 answer2.setBounds(ax, ay + dis, aw/4, ah);
 
-                JLabel question3 = new JLabel("*Mental Health Impact");
+                JLabel question3 = new JLabel("<html>Mental Health Impact <span style= color:red>*<small>Required</small></span></html>");
                 question3.setBounds(qx, qy + dis * 2, qw, qh);
                 String[] optionsMHI = {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
                 JComboBox<String> answer3 = new JComboBox<>(optionsMHI);
                 answer3.setBounds(ax, ay + dis * 2, aw/6, ah);
 
-                JLabel question4 = new JLabel(" Share your mental health experience");
+                JLabel question4 = new JLabel("Share your mental health experience (Optional)");
                 question4.setBounds(qx, qy + dis * 3, qw, qh);
                 JTextArea answerText4 = new JTextArea();
                 answerText4.setLineWrap(true);
                 JScrollPane answer4 = new JScrollPane(answerText4);
                 answer4.setBounds(ax, ay + dis * 3, aw, ah * 2);
 
-                JLabel question5 = new JLabel(" Do you think your identities were being targeted?");
+                JLabel question5 = new JLabel("Do you think your identities were being targeted? (Optional)");
                 question5.setBounds(qx, qy + dis * 4 + 25, qw, qh);
                 String[] optionsIdentity = {" ", "Yes", "No"};
                 JComboBox<String> answer5 = new JComboBox<>(optionsIdentity);
                 answer5.setBounds(ax, ay + dis * 4 + 25, aw/6, ah);
 
-                JLabel question6 = new JLabel(" If yes, which aspect(s) of your identity do you feel were relevant to this event? ");
-                question6.setBounds(qx, qy + dis * 5 + 20, qw, qh);
+                JLabel question6 = new JLabel("If yes, which aspect(s) of your identity do you feel were relevant to this event? (Optional)");
+                question6.setBounds(qx, qy + dis * 5 + 20, qw + 100, qh);
                 JTextArea answerText6 = new JTextArea();
                 answerText6.setLineWrap(true);
                 JScrollPane answer6 = new JScrollPane(answerText6);
                 answer6.setBounds(ax, ay + dis * 5 + 20, aw, ah * 2);
 
-                JLabel question7 = new JLabel(" Location");
+                JLabel question7 = new JLabel("Location of Incident (Optional)");
                 question7.setBounds(qx, qy + dis * 6 + 45, qw, qh);
                 JTextArea answerText7 = new JTextArea();
                 answerText7.setLineWrap(true);
                 JScrollPane answer7 = new JScrollPane(answerText7);
                 answer7.setBounds(ax, ay + dis * 6 + 45, aw, ah * 2);
 
-                JLabel question8 = new JLabel(" Event Description");
+                JLabel question8 = new JLabel("Event Description (Optional)");
                 question8.setBounds(qx, qy + dis * 7 + 70, qw, qh);
                 JTextArea answerText8 = new JTextArea();
                 answerText8.setLineWrap(true);
@@ -216,18 +216,21 @@ public class homeGUI extends GUIMethods{
                             contentPane.removeAll();
                             fileReportPage.repaint();
 
-                            JLabel submittedMessage = new JLabel();
-                            submittedMessage.setText("<html>Report Submitted Successfully.<br><br>Your Report ID: <b>" + report.getReport().getId() + "</b><br><br>Please save for future access.<html>");
+                            JTextPane submittedMessage = new JTextPane();
+                            submittedMessage.setOpaque(false);
+                            submittedMessage.setContentType("text/html");
+                            submittedMessage.setText("<html>Report Submitted Successfully.<br><br>Your Report ID: <b>" + report.getReport().getId() + "</b><br><br>Please save for future access.</html>");
                             Dimension labelSize = submittedMessage.getPreferredSize();
                             int centerX = fileReportPage.getWidth() / 2;
                             int centerY = fileReportPage.getHeight() / 2;
-                            submittedMessage.setBounds(centerX - labelSize.width / 2, centerY - 30 - labelSize.height / 2, 200, labelSize.height);
+                            submittedMessage.setBounds(centerX - labelSize.width / 2, centerY - labelSize.height / 2 - 100, 225, labelSize.height + 20);
+                            submittedMessage.setEditable(false);
 
                             contentPane.add(submittedMessage);
 
                             // Add button to return home
                             JButton returnHomeButton = new JButton("Back");
-                            returnHomeButton.setBounds(centerX - labelSize.width / 2 + 60, centerY - labelSize.height / 2 + 70, 75, 25);
+                            returnHomeButton.setBounds(centerX - labelSize.width / 2 + 50, centerY - labelSize.height / 2 + 25, 75, 25);
                             contentPane.add(returnHomeButton);
                             returnHomeButton.addActionListener(new ActionListener() {
                                 @Override
