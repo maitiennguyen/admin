@@ -18,3 +18,5 @@ Campus safety also plays a role in the distortion of these already obscured stat
 ## Launch Project
 The SRAS project requires that the user have mySQL downloaded, and a database ‘SRAS’ created, with a table ‘Reports’ in it. After the table is created in mySQL, and the user has JDBC downloaded and in the external library folder, the program should be able to execute by running the main method from within IntelliJ. This can be done by pressing the play button in the top of IntelliJ, or by navigating to the project via the command line and executing ‘Java Main’. From there, the user can follow the prompts displayed by the program till they are done.
 ![README_2](https://user-images.githubusercontent.com/117673140/224622235-cbd7838a-a502-4c0d-b08a-19fd3785d7a1.jpeg)
+<img width="571" alt="describeReportsTable" src="https://user-images.githubusercontent.com/126528584/226257843-0b1940cd-35f4-4578-a57d-455770f886c7.png">
+<img width="870" alt="sampleData" src="https://user-images.githubusercontent.com/126528584/226258025-289fa865-0a72-4d9c-8168-e2c356d4d7aa.png">
