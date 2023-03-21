@@ -134,13 +134,4 @@ public class Stats {
     public void displayReportsWhereIdentityWasAFactor(){
         System.out.println("Total number of reports where identity was a factor: " + countRows("Reports", "IdentityYN", "IdentityYN = 'Yes'"));
     }
-
-//    public String getFilterInput(){
-//        String filterInput;
-//    }
-
-//    public void displayFilteredReports(){ //will be more specified based off of filter
-//        System.out.println("Total number of filtered reports: ");
-//    }
-
 }

@@ -6,8 +6,7 @@ public class AdditionalResources extends MoreInfo{
             "campus community. Their services are available 24/7.\n" +
             "\n" +
             "If you would like to see a list of all their programs and services, please explore the Campus Safety Safety Programs " +
-            "and Services page on the Colorado College website. " +
-            "(direct link here: https://www.coloradocollege.edu/offices/campussafety/safety-programs-and-services/) \n" +
+            "and Services page on the Colorado College website. \n" +
             "\n" +
             "List of ways to contact Campus Safety:\n" +
             "219 E. Uintah Street\n" +
@@ -15,8 +14,7 @@ public class AdditionalResources extends MoreInfo{
             "Emergency: 719-389-6911\n" +
             "campussafety@coloradocollege.edu\n" +
             "\n" +
-            "Want to know more? Check out the Campus Safety page on the Colorado College website. " +
-            "(direct link here: https://www.coloradocollege.edu/offices/campussafety/)\n";
+            "Want to know more? Check out the Campus Safety page on the Colorado College website.\n";
     String titleIVOfficeHeader = "2. Title IV Office";
     String titleIVOfficeDescription = "The Title IV Office is a newly established office on the Colorado College campus " +
             "that is available to all students, staff, and faculty for concerns involving discrimination, harassment, " +
@@ -41,9 +39,7 @@ public class AdditionalResources extends MoreInfo{
             "tashana.taylor@coloradocollege.edu\n" +
             "\n" +
             "If you want to know more about what their office offers, please explore the Office for Civil Rights & Title IX " +
-            "page on the Colorado College website. " +
-            "(direct link here: https://www.coloradocollege.edu/offices/titleix/index.html)" +
-            "\n";
+            "page on the Colorado College website. \n";
     String counselingCenterHeader = "3. Counseling Center";
     String counselingCenterDescription = "The Counseling Center provides mental health services such as counseling, " +
             "psychotherapy, consultations, medication management and prescriptions, workshops, referrals to off-campus " +
@@ -55,7 +51,7 @@ public class AdditionalResources extends MoreInfo{
             "The primary service offered at the Counseling Center is counseling and there are a variety of reasons why a " +
             "student would seek counseling. If you would like to see the current Counseling Center staff to make an " +
             "appointment with a specific counselor, please explore the Counseling Center Staff page on the Colorado " +
-            "College website. (direct link here: https://www.coloradocollege.edu/offices/counseling/staff/index.html) " +
+            "College website. " +
             "It’s also important to note that meetings with any counselor are kept confidential by law. \n" +
             "\n" +
             "Hours of Operation:\n" +
@@ -77,22 +73,63 @@ public class AdditionalResources extends MoreInfo{
             "with a licensed counselor, or press 0 to be connected to campus safety\n" +
             "If it’s a life-threatening emergency, call 911 and/or campus safety (719-389-6911) \n" +
             "\n" +
-            "Want to know more? Explore the Counseling Center page on the Colorado College website. " +
-            "(direct link here: https://www.coloradocollege.edu/offices/counseling/) \n";
-
-    String otherOnCampusResourcesDescription =
-            "- RAVE (Anonymous and Confidential from everyone but those that monitor the app)\n" +
-            "- Sexual Assault Response Coordinator (Confidential)\n" +
-            "- Chaplain's Office (Confidential)\n" +
-            "- Ombuds Office (Confidential)\n" +
-            "- Employee Assistance Program (Confidential)\n" +
-            "- On-Demand Crisis Counseling (Confidential)\n" +
-            "- The Butler Center (Private but not confidential)\n";
+            "Want to know more? Explore the Counseling Center page on the Colorado College website. \n";
+    String SARCdescription = "The Sexual Assault Response Coordinator (SARC) provides confidential support to " +
+            "all members of the Colorado " +
+            "College community affected by sexual misconduct (i.e. sexual assault, stalking, intimate partner violence, " +
+            "and other forms of gender-based violence). They provide free and confidential survivor-centered emotional " +
+            "support and safety planning, information about options and resources, help navigating medical, legal, or " +
+            "Title IX processes, and connections to campus, community, and state resources for counseling, advising, or reporting.\n" +
+            "\n" +
+            "Phone (Mon-Fri, 9am-5pm): 719-227-8101\n" +
+            "Phone (after hours w/ the SARC advocate on call): 719-602-0960\n" +
+            "Phone (after hours w/ the counselor on call): 719-389-6093, press 2";
+    String onDemandCrisisCounselingDescription = "The On-Demand Crisis Counseling is accessible through the Support Services page on the Colorado College " +
+            "website. All a user has to do to access this feature is scroll down to the section that says Mental Health Resources and click on " +
+            "the orange button labeled 24/7 Mental Health Support for Students.";
+    String otherOnCampusResourcesDescription = "RAVE (Anonymous & Confidential from everyone but those that monitor the app)\n" +
+            "A student can download this app on their phone or simply register with RAVE through the Campus Safety Page on " +
+            "the Colorado College website.\n" +
+            "\n" +
+            "Chaplain’s Office (Confidential)\n" +
+            "The Chaplain’s Office aims to provide pastoral and spiritual care for all members of the Colorado College " +
+            "Community. They are a resource that supports students religiously and spiritually.\n" +
+            "Phone: 719-389-6638\n" +
+            "\n" +
+            "Ombuds Office (Confidential)\n" +
+            "The Ombuds Office is located in the Worner Center and is a resource for faculty and staff to resolve " +
+            "workplace issues in an informal, confidential, independent, and off-the-record channel of communication. \n" +
+            "Phone: (719) 331-1733\n" +
+            "\n" +
+            "Employee Assistance Program (Confidential)\n" +
+            "The Employee Assistance Program (EAP) with Guidance Resources provides free, confidential, short-term " +
+            "counseling and referrals to their employees at no cost. This resource can be accessed in the Employee " +
+            "Assistance Program (Guidance Resources) section of the Supporting Employee Health and Wellness page.\n" +
+            "\n" +
+            "The Butler Center (Private but not confidential)\n" +
+            "The Butler Center offers a lot of resources specifically for students. Explore their pages to find out more. \n" +
+            "Phone: (719) 389-6338\n" +
+            "Email: butlercenter@coloradocollege.edu\n";
 
     String offCampusDescription = "CC offers references to off campus therapists and prescribers. " +
-            "There's a data base that CC students can simply click on. (direct link: coloradocollege.thrivingcampus.com)\n" +
+            "There's a data base that's maintained by a company called 'Thriving Campus' that CC students " +
+            "can simply click on in the Services Section of the Counseling Center Page.\n" +
             "\n" +
-            "Colorado Springs Police Department\nhttps://coloradosprings.gov/gocos\n(719) 444-7000";
+            "Colorado Springs Police Department: 719-444-7000\n" +
+            "\n" +
+            "Peak View Behavioral Health Hospital: 719-444-8484\n" +
+            "\n" +
+            "Cedar Springs Psychiatric Hospital: 719-633-4114\n" +
+            "\n" +
+            "Pikes Peak Suicide Prevention: 888-885-1222\n" +
+            "\n" +
+            "National Alliance on Mental Illness Colorado Springs: 719-473-8477\n" +
+            "\n" +
+            "Colorado Crisis and Support Line: 844-493-8255\n" +
+            "\n" +
+            "Depression and Bipolar Support Alliance Colorado Springs (Support Groups): 719-477-1515\n" +
+            "\n" +
+            "Domestic Violence and Sexual Assault-TESSA\nCrisis Line: 719-633-3819\nGeneral Information: 719-633-1462";
 
     @Override
     public void displayAllInfo() {
