@@ -50,4 +50,27 @@ public class ParseInfo {
         }
         return keyWord;
     }
+
+    public String ParseIdentity(String userInput) {
+        // Clean up the user input by removing punctuation and connecting words
+        String cleanedInput = userInput.replaceAll("[^a-zA-Z0-9 ]", "")
+                .replaceAll("\\b(and|or)\\b", "")
+                .trim();
+
+        // Normalize the capitalization of the cleaned input
+        StringBuilder sb = new StringBuilder(cleanedInput.length());
+        boolean toUpper = true;
+        for (char c : cleanedInput.toCharArray()) {
+            if (Character.isLetter(c)) {
+                sb.append(toUpper ? Character.toUpperCase(c) : Character.toLowerCase(c));
+                toUpper = false;
+            } else {
+                sb.append(c);
+                toUpper = true;
+            }
+        }
+        String normalizedInput = sb.toString();
+
+        return normalizedInput;
+    }
 }

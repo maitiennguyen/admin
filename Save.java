@@ -48,7 +48,7 @@ public class Save extends ReportDAO implements sqlDataMethods
             String sql = "INSERT INTO ParsedInfo (Location, Identity, ID) VALUES (?, ?, ?)";
             statement = conn.prepareStatement(sql);
             statement.setString(1, new ParseInfo().parsingLocation(report.getLocation()));
-            statement.setString(2, "TEST");
+            statement.setString(2, new ParseInfo().ParseIdentity(report.getIdentityText()));
             statement.setString(3, report.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -115,7 +115,7 @@ public class Save extends ReportDAO implements sqlDataMethods
             String sql3 = "UPDATE ParsedInfo SET LOCATION = ?, Identity = ? WHERE ID = ?";
             PreparedStatement updateTable3Statement = conn.prepareStatement(sql3);
             updateTable3Statement.setString(1, new ParseInfo().parsingLocation(report.getLocation()));
-            updateTable3Statement.setString(2, "TEST");
+            updateTable3Statement.setString(2, new ParseInfo().ParseIdentity(report.getIdentityText());
             updateTable3Statement.setString(3, report.getId());
 
             updateTable1Statement.executeUpdate();
