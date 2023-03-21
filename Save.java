@@ -49,7 +49,7 @@ public class Save extends ReportDAO implements sqlDataMethods
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy"); //set the date format
         try
         {
-            String sql = "SELECT * FROM ShortAnswers INNER JOIN LongAnswers ON ShortAnswers.ID = LongAnswers.ID WHERE ShortAnswers.ID = ?";
+            String sql = "SELECT * FROM ShortAnswers INNER JOIN LongAnswers ON ShortAnswers.ID = LongAnswers.ID INNER JOIN ParsedInfo on ShortAnswers.ID = ParsedInfo.ID WHERE ShortAnswers.ID = ?";
             statement = conn.prepareStatement(sql);
             statement.setString(1, Id);
             ResultSet resultSet = statement.executeQuery();
