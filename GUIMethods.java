@@ -8,14 +8,14 @@ import java.net.URI;
 import java.sql.*;
 
 public class GUIMethods {
-    public void about (JFrame aboutFrame){
+    public void about (JFrame aboutFrame) {
         aboutFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        aboutFrame.setBounds(500,50, 500, 650);
+        aboutFrame.setBounds(500, 50, 500, 650);
 
         Container aboutContainer = aboutFrame.getContentPane();
         aboutContainer.setLayout(null);
 
-        Font titleFont = new Font("Arial",Font.PLAIN, 30);
+        Font titleFont = new Font("Arial", Font.PLAIN, 30);
 
         JLabel aboutTitle = new JLabel("About");
         aboutTitle.setOpaque(true);
@@ -34,7 +34,7 @@ public class GUIMethods {
         dataUsageButton.setBounds(150, 290, 200, 70);
 
         JButton FAQButton = new JButton("FAQ");
-        FAQButton.setBounds(150, 390,200, 70);
+        FAQButton.setBounds(150, 390, 200, 70);
 
         JButton foundersAndCurrentTeamButton = new JButton("Founders and Current Team");
         foundersAndCurrentTeamButton.setBounds(150, 490, 200, 70);
@@ -73,7 +73,7 @@ public class GUIMethods {
                 aboutContainer.remove(returnHomeButton);
                 aboutFrame.repaint();
 
-                aboutFrame.setBounds(500,50, 500, 500);
+                aboutFrame.setBounds(500, 50, 500, 500);
 
                 // Add button to return to About
                 JButton returnAbout = new JButton("Back");
@@ -90,7 +90,7 @@ public class GUIMethods {
 
                 //first text field
                 JTextArea whySRASTextField1 = new JTextArea(new About().whySRASDescription);
-                whySRASTextField1.setBounds(0,80,500, 280);
+                whySRASTextField1.setBounds(0, 80, 500, 280);
                 whySRASTextField1.setLineWrap(true);
                 whySRASTextField1.setWrapStyleWord(true);
                 whySRASTextField1.setEditable(false);
@@ -112,7 +112,7 @@ public class GUIMethods {
                 aboutContainer.remove(returnHomeButton);
                 aboutFrame.repaint();
 
-                aboutFrame.setBounds(500,50, 500, 500);
+                aboutFrame.setBounds(500, 50, 500, 500);
 
                 // Add button to return to About
                 JButton returnAbout = new JButton("Back");
@@ -129,7 +129,7 @@ public class GUIMethods {
 
                 //first text field
                 JTextArea ourGoalsTextField1 = new JTextArea(new About().ourGoalsDescription);
-                ourGoalsTextField1.setBounds(0,90,500, 250);
+                ourGoalsTextField1.setBounds(0, 90, 500, 250);
                 ourGoalsTextField1.setLineWrap(true);
                 ourGoalsTextField1.setWrapStyleWord(true);
                 ourGoalsTextField1.setEditable(false);
@@ -151,7 +151,7 @@ public class GUIMethods {
                 aboutContainer.remove(returnHomeButton);
                 aboutFrame.repaint();
 
-                aboutFrame.setBounds(500,50, 500, 500);
+                aboutFrame.setBounds(500, 50, 500, 500);
 
                 // Add button to return to About
                 JButton returnAbout = new JButton("Back");
@@ -168,7 +168,7 @@ public class GUIMethods {
 
                 //first text field
                 JTextArea dataUsageTextField1 = new JTextArea(new About().dataUsageDescription);
-                dataUsageTextField1.setBounds(0,90,500, 140);
+                dataUsageTextField1.setBounds(0, 90, 500, 140);
                 dataUsageTextField1.setLineWrap(true);
                 dataUsageTextField1.setWrapStyleWord(true);
                 dataUsageTextField1.setEditable(false);
@@ -190,7 +190,7 @@ public class GUIMethods {
                 aboutContainer.remove(returnHomeButton);
                 aboutFrame.repaint();
 
-                aboutFrame.setBounds(500,50, 500, 720);
+                aboutFrame.setBounds(500, 50, 500, 720);
 
                 // Add button to return to About
                 JButton returnAbout = new JButton("Back");
@@ -207,28 +207,28 @@ public class GUIMethods {
 
                 //first text field
                 JTextArea FAQTextField1 = new JTextArea(new About().howToNavigateHeading + new About().howToNavigateDescription);
-                FAQTextField1.setBounds(0,80,500, 135);
+                FAQTextField1.setBounds(0, 80, 500, 135);
                 FAQTextField1.setLineWrap(true);
                 FAQTextField1.setWrapStyleWord(true);
                 FAQTextField1.setEditable(false);
 
                 //second text field
                 JTextArea FAQTextField2 = new JTextArea(new About().howDoIFileAReportHeading + new About().howDoIFileAReportDescription);
-                FAQTextField2.setBounds(0,225,500, 153);
+                FAQTextField2.setBounds(0, 225, 500, 153);
                 FAQTextField2.setLineWrap(true);
                 FAQTextField2.setWrapStyleWord(true);
                 FAQTextField2.setEditable(false);
 
                 //third text field
-                JTextArea FAQTextField3 = new JTextArea(new About().howDoIReAccessAReportHeading+ new About().howDoIReAccessAReportDescription);
-                FAQTextField3.setBounds(0,388,500, 135);
+                JTextArea FAQTextField3 = new JTextArea(new About().howDoIReAccessAReportHeading + new About().howDoIReAccessAReportDescription);
+                FAQTextField3.setBounds(0, 388, 500, 135);
                 FAQTextField3.setLineWrap(true);
                 FAQTextField3.setWrapStyleWord(true);
                 FAQTextField3.setEditable(false);
 
                 //fourth text field
                 JTextArea FAQTextField4 = new JTextArea(new About().howCurrentAreTheStatisticsHeading + new About().howCurrentAreTheStatisticsDescription);
-                FAQTextField4.setBounds(0,533,500, 73);
+                FAQTextField4.setBounds(0, 533, 500, 73);
                 FAQTextField4.setLineWrap(true);
                 FAQTextField4.setWrapStyleWord(true);
                 FAQTextField4.setEditable(false);
@@ -253,7 +253,7 @@ public class GUIMethods {
                 aboutContainer.remove(returnHomeButton);
                 aboutFrame.repaint();
 
-                aboutFrame.setBounds(500,50, 500, 400);
+                aboutFrame.setBounds(500, 50, 500, 400);
 
                 // Add button to return to About
                 JButton returnAbout = new JButton("Back");
@@ -270,7 +270,7 @@ public class GUIMethods {
 
                 //first text field
                 JTextArea foundersAndCurrTeamDescription = new JTextArea(new About().foundersAndCurrentTeamDescription);
-                foundersAndCurrTeamDescription.setBounds(0,80,500, 250);
+                foundersAndCurrTeamDescription.setBounds(0, 80, 500, 260);
                 foundersAndCurrTeamDescription.setLineWrap(true);
                 foundersAndCurrTeamDescription.setWrapStyleWord(true);
                 foundersAndCurrTeamDescription.setEditable(false);
@@ -278,7 +278,6 @@ public class GUIMethods {
                 aboutContainer.add(foundersAndCurrTeamDescription);
             }
         });
-
         aboutFrame.setVisible(true);
     }
 
@@ -354,7 +353,7 @@ public class GUIMethods {
                 // Add button to return home
                 JButton returnAddRe = new JButton("Back");
                 returnAddRe.setBounds(1, 1, 75, 25);
-
+//
                 addResourcesContainer.add(campusSafety);
                 addResourcesContainer.add(titleIVOffice);
                 addResourcesContainer.add(counselingCenter);

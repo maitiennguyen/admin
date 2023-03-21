@@ -38,10 +38,12 @@ public class About extends MoreInfo{
             "\n" +
             "Whitner Reichman (she/her/they/them) \n" +
             "Major: Polyoptic Studies \n" +
+            "Minor: Music \n" +
             "Class of 2024 \n" +
             "\n" +
             "Judinelly Gonzalez (she/her) \n" +
             "Major: Computer Science \n" +
+            "Minor: Studio Art \n" +
             "Class of 2025 \n";
 
     String howToNavigateHeading = "How do I navigate the Student Reports & Statistics platform? \n";
