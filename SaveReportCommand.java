@@ -12,5 +12,6 @@ public class SaveReportCommand implements Command{
         ReportDAO.makeDBConnection();
         new Save().saveReportShortAnswers(this.report); //implementing save method
         new Save().saveReportLongAnswers(this.report);
+        new Save().saveReportParsedInfo(this.report);
     }
 }
