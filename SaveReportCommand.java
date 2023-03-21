@@ -10,6 +10,7 @@ public class SaveReportCommand implements Command{
         // submit it to database
         ReportDAO DAO = new ReportDAO();
         ReportDAO.makeDBConnection();
-        new Save().saveReport(this.report); //implementing save method
+        new Save().saveReportShortAnswers(this.report); //implementing save method
+        new Save().saveReportLongAnswers(this.report);
     }
 }
