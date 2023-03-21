@@ -38,7 +38,19 @@ public class Save extends ReportDAO implements sqlDataMethods
             statement.setString(4, report.getEventDes());
             statement.setString(5, report.getId());
             statement.executeUpdate();
-            System.out.println("Report submitted and saved successfully.");
+        } catch (SQLException e) {
+            System.out.println("Error saving report: " + e.getMessage());
+        }
+    }
+
+    public void saveReportParsedInfo(Report report) {
+        try {
+            String sql = "INSERT INTO ParsedInfo (Location, Identity, ID) VALUES (?, ?, ?)";
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, new ParseInfo().parsingLocation(report.getLocation()));
+            statement.setString(2, "TEST");
+            statement.setString(3, report.getId());
+            statement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error saving report: " + e.getMessage());
         }
@@ -49,7 +61,7 @@ public class Save extends ReportDAO implements sqlDataMethods
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy"); //set the date format
         try
         {
-            String sql = "SELECT * FROM ShortAnswers INNER JOIN LongAnswers ON ShortAnswers.ID = LongAnswers.ID INNER JOIN ParsedInfo on ShortAnswers.ID = ParsedInfo.ID WHERE ShortAnswers.ID = ?";
+            String sql = "SELECT * FROM ShortAnswers INNER JOIN LongAnswers ON ShortAnswers.ID = LongAnswers.ID WHERE ShortAnswers.ID = ?";
             statement = conn.prepareStatement(sql);
             statement.setString(1, Id);
             ResultSet resultSet = statement.executeQuery();
@@ -100,8 +112,15 @@ public class Save extends ReportDAO implements sqlDataMethods
             updateTable2Statement.setString(4, report.getEventDes());
             updateTable2Statement.setString(5, report.getId());
 
+            String sql3 = "UPDATE ParsedInfo SET LOCATION = ?, Identity = ? WHERE ID = ?";
+            PreparedStatement updateTable3Statement = conn.prepareStatement(sql3);
+            updateTable3Statement.setString(1, new ParseInfo().parsingLocation(report.getLocation()));
+            updateTable3Statement.setString(2, "TEST");
+            updateTable3Statement.setString(3, report.getId());
+
             updateTable1Statement.executeUpdate();
             updateTable2Statement.executeUpdate();
+            updateTable3Statement.executeUpdate();
 
         } catch (SQLException e) {
             System.out.println("Error updating report: " + e.getMessage());
@@ -112,15 +131,19 @@ public class Save extends ReportDAO implements sqlDataMethods
     public void deleteReport(String Id) {
         String sql1 = "DELETE FROM ShortAnswers WHERE ID = ?";
         String sql2 = "DELETE FROM LongAnswers WHERE ID = ?";
+        String sql3 = "DELETE FROM ParsedInfo WHERE ID = ?";
         try {
             PreparedStatement pstmt1 = conn.prepareStatement(sql1);
             PreparedStatement pstmt2 = conn.prepareStatement(sql2);
+            PreparedStatement pstmt3 = conn.prepareStatement(sql3);
 
             pstmt1.setString(1, Id);
             pstmt2.setString(1, Id);
+            pstmt3.setString(1, Id);
 
             pstmt1.executeUpdate();
             pstmt2.executeUpdate();
+            pstmt3.executeUpdate();
 
             System.out.println("Report deleted successfully.");
         } catch (SQLException e) {
