@@ -872,63 +872,132 @@ public class GUIMethods {
     public void campusStats(JFrame campusStatsFrame) {
         // set up frame
         campusStatsFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        campusStatsFrame.setBounds(400, 50, 700, 725);
+        campusStatsFrame.setBounds(450, 50, 600, 675);
 
         // create container with null layout
         Container campusStatsContainer = campusStatsFrame.getContentPane();
         campusStatsContainer.setLayout(null);
 
-        // create panel for buttons
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
-        buttonPanel.setBounds(0, 0, 100, campusStatsFrame.getHeight() - 100); // set bounds to left-hand side of container
-        campusStatsContainer.add(buttonPanel); // add panel to container
+        Font titleFont = new Font("Arial", Font.PLAIN, 30);
+
+        JLabel campusStatsTitle = new JLabel("Campus Statistics");
+        campusStatsTitle.setOpaque(true);
+        campusStatsTitle.setBounds(180, 20, 500, 40);
+        campusStatsTitle.setFont(titleFont);
+
+        //return button
+        JButton returnHomeButton = new JButton("Back");
+        returnHomeButton.setBounds(1, 1, 75, 25);
+
+        //submit button
+        JButton submitButton = new JButton("Submit");
+        submitButton.setBounds(250, 550, 75, 25);
+
+        campusStatsContainer.add(campusStatsTitle);
+        campusStatsContainer.add(returnHomeButton);
+        campusStatsContainer.add(submitButton);
+
+        returnHomeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new homeGUI();
+                campusStatsFrame.dispose();
+            }
+        });
+
+        // text field at the top of stats
+        JTextArea statsTextField = new JTextArea(generate3MostFreqLocations() + "\n" + "\n" + generateAvgMHIText() + "\n" + generateTotalNumOfRowsText());
+        statsTextField.setBounds(140,80,320, 250);
+        statsTextField.setLineWrap(true);
+        statsTextField.setWrapStyleWord(true);
+        statsTextField.setEditable(false);
+        campusStatsContainer.add(statsTextField);
 
         // create panel for text fields and combo box
         JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new GridLayout(3, 2));
+        inputPanel.setLayout(new GridLayout(5, 2));
         inputPanel.setBounds(campusStatsFrame.getWidth() / 4, campusStatsFrame.getHeight() - 300, campusStatsFrame.getWidth() / 2, 100);
         campusStatsContainer.add(inputPanel);
 
         // create input fields
         JTextField startDateField = new JTextField("Start Date");
         JTextField endDateField = new JTextField("End Date");
+        JTextField identityField = new JTextField("Identity");
 
-        // create combo box for class selection
-        JComboBox<String> classComboBox = new JComboBox<>(new String[] {"First Year", "Second Year", "Third Year", "Fourth Year"});
+        // create combo boxs
+        JComboBox<String> classComboBox = new JComboBox<>(new String[] {"", "First Year", "Second Year", "Third Year", "Fourth Year"});
+        JComboBox<String> identityComboBox = new JComboBox<>(new String[] {"", "Yes", "No"});
 
         // add input fields and combo box to panel
         inputPanel.add(new JLabel("Start Date"));
         inputPanel.add(startDateField);
         inputPanel.add(new JLabel("End Date"));
         inputPanel.add(endDateField);
+        inputPanel.add(new JLabel("Identity"));
+        inputPanel.add(identityField);
         inputPanel.add(new JLabel("Class"));
         inputPanel.add(classComboBox);
+        inputPanel.add(new JLabel("IdentityYN"));
+        inputPanel.add(identityComboBox);
 
+        // make frame visible
+        campusStatsFrame.setVisible(true);
+    }
+
+    public String generateAvgMHIText() {
+        StringBuilder sb = new StringBuilder();
         ReportDAO reportDao = new ReportDAO();
         Connection conn = reportDao.getConnection();
-        String query = "SELECT * FROM table2";
-        try (PreparedStatement pstmt = ReportDAO.conn.prepareStatement(query)) {
-            // get columns from table2
-            ResultSet result = pstmt.executeQuery(query);
-
-            // add buttons to panel based on columns in table2
-            try {
-                ResultSetMetaData meta = result.getMetaData();
-                int numCols = meta.getColumnCount();
-                for (int i = 1; i <= numCols; i++) {
-                    String colName = meta.getColumnName(i);
-                    buttonPanel.add(new JButton(colName));
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
+        String avgMhiQuery = "SELECT AVG(MHI) FROM ShortAnswers";
+        try (PreparedStatement pstmt = ReportDAO.conn.prepareStatement(avgMhiQuery)) {
+            // calculate average MHI number
+            ResultSet avgMhiResult = pstmt.executeQuery();
+            if (avgMhiResult.next()) {
+                double avgMhi = avgMhiResult.getDouble(1);
+                sb.append(String.format("Average MHI Number: %.2f\n", avgMhi));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return sb.toString();
+    }
+    public String generateTotalNumOfRowsText(){
+        StringBuilder sb = new StringBuilder();
+        String numRowsQuery = "SELECT COUNT(*) FROM ShortAnswers";
+        ReportDAO reportDao = new ReportDAO();
+        Connection conn = reportDao.getConnection();
+        try(PreparedStatement pstmt = ReportDAO.conn.prepareStatement(numRowsQuery)){
+            ResultSet numRowsResult = pstmt.executeQuery();
+            if (numRowsResult.next()) {
+                int numRows = numRowsResult.getInt(1);
+                sb.append(String.format("Total number of rows: %d\n", numRows));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return sb.toString();
+    }
 
-        // make frame visible
-        campusStatsFrame.setVisible(true);
+    public String generate3MostFreqLocations() {
+        StringBuilder sb = new StringBuilder();
+        ReportDAO reportDao = new ReportDAO();
+        Connection conn = reportDao.getConnection();
+        String freqLocsQuery = "SELECT Location, COUNT(*) as count FROM LongAnswers GROUP BY location ORDER BY count DESC LIMIT 3";
+        try (PreparedStatement pstmt = ReportDAO.conn.prepareStatement(freqLocsQuery)) {
+            // calculate total number of rows
+            ResultSet freqLocsResult = pstmt.executeQuery();
+            sb.append("Most frequent locations: ");
+            while (freqLocsResult.next()) {
+                String location = freqLocsResult.getString("Location");
+                sb.append(location);
+                if (!freqLocsResult.isLast()) {
+                    sb.append(", ");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return sb.toString();
     }
 
     public void fileReport(JFrame fileReportFrame){
