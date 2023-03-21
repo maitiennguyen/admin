@@ -110,10 +110,18 @@ public class Save extends ReportDAO implements sqlDataMethods
 
     @Override
     public void deleteReport(String Id) {
-        String sql = "DELETE FROM Reports WHERE ID = ?";
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, Id);
-            pstmt.executeUpdate();
+        String sql1 = "DELETE FROM ShortAnswers WHERE ID = ?";
+        String sql2 = "DELETE FROM LongAnswers WHERE ID = ?";
+        try {
+            PreparedStatement pstmt1 = conn.prepareStatement(sql1);
+            PreparedStatement pstmt2 = conn.prepareStatement(sql2);
+
+            pstmt1.setString(1, Id);
+            pstmt2.setString(1, Id);
+
+            pstmt1.executeUpdate();
+            pstmt2.executeUpdate();
+
             System.out.println("Report deleted successfully.");
         } catch (SQLException e) {
             System.out.println("Error deleting report: " + e.getMessage());
