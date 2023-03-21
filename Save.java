@@ -44,12 +44,17 @@ public class Save extends ReportDAO implements sqlDataMethods
     }
 
     public void saveReportParsedInfo(Report report) {
+        // change date string type to object type
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        LocalDate localDate = LocalDate.parse(report.getDate(), formatter);
+        Date date = Date.valueOf(localDate);
         try {
-            String sql = "INSERT INTO ParsedInfo (Location, Identity, ID) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO ParsedInfo (Location, Identity, Class, ID) VALUES (?, ?, ?, ?)";
             statement = conn.prepareStatement(sql);
             statement.setString(1, new ParseInfo().parsingLocation(report.getLocation()));
             statement.setString(2, new ParseInfo().ParseIdentity(report.getIdentityText()));
-            statement.setString(3, report.getId());
+            statement.setInt(3, calculateSaveClass(report.getGradYear(), date));
+            statement.setString(4, report.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error saving report: " + e.getMessage());
@@ -115,7 +120,7 @@ public class Save extends ReportDAO implements sqlDataMethods
             String sql3 = "UPDATE ParsedInfo SET LOCATION = ?, Identity = ? WHERE ID = ?";
             PreparedStatement updateTable3Statement = conn.prepareStatement(sql3);
             updateTable3Statement.setString(1, new ParseInfo().parsingLocation(report.getLocation()));
-            updateTable3Statement.setString(2, new ParseInfo().ParseIdentity(report.getIdentityText());
+            updateTable3Statement.setString(2, new ParseInfo().ParseIdentity(report.getIdentityText()));
             updateTable3Statement.setString(3, report.getId());
 
             updateTable1Statement.executeUpdate();
@@ -151,18 +156,17 @@ public class Save extends ReportDAO implements sqlDataMethods
         }
     }
 
-    public Integer calculateSaveClass(String gradYear, String dateStr)
+    public int calculateSaveClass(String gradYear, Date date)
     {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-        LocalDate date = LocalDate.parse(dateStr, formatter);
         int yearDifference = date.getYear() - Integer.parseInt(gradYear);
         if (yearDifference >= 0 && yearDifference <= 3)
         {
             return yearDifference;
         } else {
-            return null;
+            return 5;
         }
     }
+
 }
 
 

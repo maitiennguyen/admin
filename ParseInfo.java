@@ -1,6 +1,14 @@
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
+
 public class ParseInfo {
+    // change date string type to object type
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+    LocalDate localDate = LocalDate.parse(report.getDate(), formatter);
+    Date date = Date.valueOf(localDate);
     private String[] ccLocations = {"campus safety"
             , "gear"
             , "armstrong"
