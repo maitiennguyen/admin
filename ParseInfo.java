@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class ParseLocation {
+public class ParseInfo {
     private String[] ccLocations = {"campus safety"
             , "gear"
             , "armstrong"
