@@ -158,7 +158,7 @@ public class Save extends ReportDAO implements sqlDataMethods
 
     public int calculateSaveClass(String gradYear, Date date)
     {
-        int yearDifference = date.getYear() - Integer.parseInt(gradYear);
+        int yearDifference = Integer.parseInt(gradYear) - date.getYear();
         if (yearDifference >= 0 && yearDifference <= 3)
         {
             return yearDifference;
