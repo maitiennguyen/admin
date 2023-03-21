@@ -509,7 +509,6 @@ public class GUIMethods {
         inputPanel.setLayout(new GridLayout(2, 2));
         inputPanel.setBounds(campusStatsFrame.getWidth() / 4, campusStatsFrame.getHeight() - 100, campusStatsFrame.getWidth() / 2, 100);
         campusStatsContainer.add(inputPanel);
-        generateStatsText();
 
         // create input fields
         JTextField startDateField = new JTextField("Start Date");
@@ -550,41 +549,6 @@ public class GUIMethods {
         campusStatsFrame.setVisible(true);
     }
 
-    public String generateStatsText() {
-        StringBuilder sb = new StringBuilder();
-        try (ReportDAO reportDao = new ReportDAO(); Connection conn = reportDao.getConnection()) {
-            // calculate average MHI number
-            String avgMhiQuery = "SELECT AVG(mhi) FROM table2";
-            ResultSet avgMhiResult = ReportDAO.executeQuery(conn, avgMhiQuery);
-            if (avgMhiResult.next()) {
-                double avgMhi = avgMhiResult.getDouble(1);
-                sb.append(String.format("Average MHI number: %.2f\n", avgMhi));
-            }
-
-            // calculate total number of rows
-            String numRowsQuery = "SELECT COUNT(*) FROM table2";
-            ResultSet numRowsResult = ReportDAO.executeQuery(conn, numRowsQuery);
-            if (numRowsResult.next()) {
-                int numRows = numRowsResult.getInt(1);
-                sb.append(String.format("Total number of rows: %d\n", numRows));
-            }
-
-            // calculate three most frequent location names
-            String freqLocsQuery = "SELECT location, COUNT(*) as count FROM table2 GROUP BY location ORDER BY count DESC LIMIT 3";
-            ResultSet freqLocsResult = ReportDAO.executeQuery(conn, freqLocsQuery);
-            sb.append("Most frequent location names: ");
-            while (freqLocsResult.next()) {
-                String location = freqLocsResult.getString("location");
-                sb.append(location);
-                if (!freqLocsResult.isLast()) {
-                    sb.append(", ");
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return sb.toString();
-    }
 
 
     public void fileReport(JFrame fileReportFrame){
