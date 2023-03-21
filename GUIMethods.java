@@ -334,22 +334,22 @@ public class GUIMethods {
 
                 //buttons in the additional resources page
                 JButton campusSafety = new JButton("Campus Safety");
-                campusSafety.setBounds(150, 150, 200, 70);
+                campusSafety.setBounds(150, 100, 200, 70);
 
                 JButton titleIVOffice = new JButton("Title IV Office");
-                titleIVOffice.setBounds(150, 250, 200, 70);
+                titleIVOffice.setBounds(150, 200, 200, 70);
 
                 JButton counselingCenter = new JButton("Counseling Center");
-                counselingCenter.setBounds(150, 350, 200, 70);
+                counselingCenter.setBounds(150, 300, 200, 70);
 
                 JButton SARC = new JButton("SARC");
-                SARC.setBounds(150, 450, 200, 70);
+                SARC.setBounds(150, 400, 200, 70);
 
                 JButton onDemandCrisisCounseling = new JButton("On-Demand Crisis Counseling");
-                onDemandCrisisCounseling.setBounds(150, 550, 200, 70);
+                onDemandCrisisCounseling.setBounds(150, 500, 200, 70);
 
                 JButton otherOnCampusResources = new JButton("Other On Campus Resources");
-                otherOnCampusResources.setBounds(150, 650, 200, 70);
+                otherOnCampusResources.setBounds(150, 600, 200, 70);
 
                 // Add button to return home
                 JButton returnAddRe = new JButton("Back");
