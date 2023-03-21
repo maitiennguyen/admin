@@ -78,64 +78,34 @@ public class Save extends ReportDAO implements sqlDataMethods
         return null;
     }
 
-//    public Report retrieveReportLongAnswers(String Id)
-//    {
-//        try
-//        {
-//            String sql = "SELECT * FROM LongAnswers WHERE ID = ?";
-//            statement = conn.prepareStatement(sql);
-//            statement.setString(1, Id);
-//            ResultSet resultSet = statement.executeQuery();
-//            if (resultSet.next()) {
-//                Report report = new Report();
-//                report.setMHIText(resultSet.getString("MHIT"));
-//                report.setIdentityText(resultSet.getString("IdentityTxt"));
-//                report.setLocation(resultSet.getString("Location"));
-//                report.setEventDes(resultSet.getString("EventD"));
-//                report.setId(resultSet.getString("ID"));
-//                System.out.println("Report retrieved successfully.");
-//                return report;
-//            }
-//            else
-//            {
-//                System.out.println("No report found with ID " + Id);
-//                return null;
-//            }
-//        } catch (SQLException e) {
-//            System.out.println("Error retrieving report: " + e.getMessage());
-//        }
-//        return null;
-//    }
-
     public void updateReport(Report report) {
         // change date string type to object type
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         LocalDate localDate = LocalDate.parse(report.getDate(), formatter);
         Date date = Date.valueOf(localDate);
         try {
-            String sql = "UPDATE Reports SET Grad = ?, MHI = ?, MHIT = ?, Date = ?, IdentityYN = ?, IdentityTxt = ?, Location = ?, EventD = ? WHERE ID = ?";
-            statement = conn.prepareStatement(sql);
-            statement.setString(1, report.getGradYear());
-            statement.setString(2, report.getMHI());
-            statement.setString(3, report.getMHIText());
-            statement.setDate(4, date);
-            statement.setString(5, report.getIdentityYN());
-            statement.setString(6, report.getIdentityText());
-            statement.setString(7, report.getLocation());
-            statement.setString(8, report.getEventDes());
-            statement.setString(9, report.getId());
-            Integer reportClass = calculateSaveClass(report.getGradYear(), report.getDate());
-            if (reportClass != null)
-            {
-                statement.setInt(10, reportClass);
-            } else {
-                statement.setNull(10, java.sql.Types.INTEGER);
-            }
-            statement.executeUpdate();
+            String sql1 = "UPDATE ShortAnswers SET Grad = ?, MHI = ?, Date = ?, IdentityYN = ? WHERE ID = ?";
+            PreparedStatement updateTable1Statement = conn.prepareStatement(sql1);
+            updateTable1Statement.setString(1, report.getGradYear());
+            updateTable1Statement.setString(2, report.getMHI());
+            updateTable1Statement.setDate(3, date);
+            updateTable1Statement.setString(4, report.getIdentityYN());
+            updateTable1Statement.setString(5, report.getId());
+
+            String sql2 = "UPDATE LongAnswers SET MHIT = ?, IdentityTxt = ?, Location = ?, EventD = ? WHERE ID = ?";
+            PreparedStatement updateTable2Statement = conn.prepareStatement(sql2);
+            updateTable2Statement.setString(1, report.getMHIText());
+            updateTable2Statement.setString(2, report.getIdentityText());
+            updateTable2Statement.setString(3, report.getLocation());
+            updateTable2Statement.setString(4, report.getEventDes());
+            updateTable2Statement.setString(5, report.getId());
+
+            updateTable1Statement.executeUpdate();
+            updateTable2Statement.executeUpdate();
+
         } catch (SQLException e) {
             System.out.println("Error updating report: " + e.getMessage());
         }
-
     }
 
     @Override
@@ -162,7 +132,6 @@ public class Save extends ReportDAO implements sqlDataMethods
             return null;
         }
     }
-
 }
 
 
