@@ -44,6 +44,9 @@ public class ParseInfo {
                 keyWord = word;
                 break;
             }
+            else {
+                keyWord = "other";
+            }
         }
         return keyWord;
     }
