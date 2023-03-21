@@ -891,14 +891,6 @@ public class GUIMethods {
         inputPanel.setBounds(campusStatsFrame.getWidth() / 4, campusStatsFrame.getHeight() - 300, campusStatsFrame.getWidth() / 2, 100);
         campusStatsContainer.add(inputPanel);
 
-        //text field for average MHI
-        JTextArea genStatsTextField = new JTextArea(generateAvgMHIText() + generateTotalNumOfRowsText() + generate3MostFreqLocations());
-        genStatsTextField.setBounds(200,550,300, 100);
-        genStatsTextField.setLineWrap(true);
-        genStatsTextField.setWrapStyleWord(true);
-        genStatsTextField.setEditable(false);
-        campusStatsContainer.add(genStatsTextField);
-
         // create input fields
         JTextField startDateField = new JTextField("Start Date");
         JTextField endDateField = new JTextField("End Date");
@@ -938,66 +930,6 @@ public class GUIMethods {
 
         // make frame visible
         campusStatsFrame.setVisible(true);
-    }
-
-    public String generateAvgMHIText() {
-        StringBuilder sb = new StringBuilder();
-        ReportDAO reportDao = new ReportDAO();
-        Connection conn = reportDao.getConnection();
-        String avgMhiQuery = "SELECT AVG(MHI) FROM table2";
-        try (PreparedStatement pstmt = ReportDAO.conn.prepareStatement(avgMhiQuery)) {
-            // calculate average MHI number
-            ResultSet avgMhiResult = pstmt.executeQuery();
-            if (avgMhiResult.next()) {
-                double avgMhi = avgMhiResult.getDouble(1);
-                sb.append(String.format("Average MHI number: %.2f\n", avgMhi));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return sb.toString();
-    }
-
-    public String generateTotalNumOfRowsText() {
-        StringBuilder sb = new StringBuilder();
-        ReportDAO reportDao = new ReportDAO();
-        Connection conn = reportDao.getConnection();
-        String numRowsQuery = "SELECT COUNT(*) FROM table2";
-        try (PreparedStatement pstmt = ReportDAO.conn.prepareStatement(numRowsQuery)) {
-            //calculate total number of rows
-            ResultSet numRowsResult = pstmt.executeQuery();
-            if (numRowsResult.next()) {
-                int numRows = numRowsResult.getInt(1);
-                sb.append(String.format("Total number of rows: %d\n", numRows));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return sb.toString();
-    }
-
-    public String generate3MostFreqLocations() {
-        StringBuilder sb = new StringBuilder();
-        ReportDAO reportDao = new ReportDAO();
-        Connection conn = reportDao.getConnection();
-        String freqLocsQuery = "SELECT Location, COUNT(*) as count FROM table2 GROUP BY Location ORDER BY count DESC LIMIT 3";
-        try (PreparedStatement pstmt = ReportDAO.conn.prepareStatement(freqLocsQuery)) {
-            // calculate three most frequent location names
-            ResultSet freqLocsResult = pstmt.executeQuery();
-            if (freqLocsResult.next()) {
-                sb.append("Most frequent location names: ");
-                while (freqLocsResult.next()) {
-                    String location = freqLocsResult.getString("Location");
-                    sb.append(location);
-                    if (!freqLocsResult.isLast()) {
-                    sb.append(", ");
-                    }
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return sb.toString();
     }
 
     public void fileReport(JFrame fileReportFrame){
