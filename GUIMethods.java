@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
-
 public class GUIMethods {
     public void about (JFrame aboutFrame){
         aboutFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
