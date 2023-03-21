@@ -200,7 +200,7 @@ public class homeGUI extends GUIMethods{
                         else if (error == 2) {
                             contentPane.remove(errorMessage);
                             errorMessage.setText("<html>Required. Must be in MM/dd/yyyy format.<br>Date should be today or within the past 20 years of graduation year.</html>");
-                            errorMessage.setBounds(ax + 150, ay + dis - 30, aw + 100, ah + 50);
+                            errorMessage.setBounds(ax + 150, ay + dis - 20, aw + 100, ah + 50);
                             contentPane.add(errorMessage);
                             fileReportPage.repaint();
                         }
