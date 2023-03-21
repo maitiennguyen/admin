@@ -86,7 +86,7 @@ public class GUIMethods {
 
                 //first text field
                 JTextArea whySRASTextField1 = new JTextArea(new About().whySRASDescription);
-                whySRASTextField1.setBounds(0,80,500, 150);
+                whySRASTextField1.setBounds(0,80,500, 280);
                 whySRASTextField1.setLineWrap(true);
                 whySRASTextField1.setWrapStyleWord(true);
                 whySRASTextField1.setEditable(false);
@@ -125,7 +125,7 @@ public class GUIMethods {
 
                 //first text field
                 JTextArea ourGoalsTextField1 = new JTextArea(new About().ourGoalsDescription);
-                ourGoalsTextField1.setBounds(0,90,500, 300);
+                ourGoalsTextField1.setBounds(0,90,500, 250);
                 ourGoalsTextField1.setLineWrap(true);
                 ourGoalsTextField1.setWrapStyleWord(true);
                 ourGoalsTextField1.setEditable(false);
@@ -164,7 +164,7 @@ public class GUIMethods {
 
                 //first text field
                 JTextArea dataUsageTextField1 = new JTextArea(new About().dataUsageDescription);
-                dataUsageTextField1.setBounds(0,90,500, 150);
+                dataUsageTextField1.setBounds(0,90,500, 140);
                 dataUsageTextField1.setLineWrap(true);
                 dataUsageTextField1.setWrapStyleWord(true);
                 dataUsageTextField1.setEditable(false);
@@ -266,7 +266,7 @@ public class GUIMethods {
 
                 //first text field
                 JTextArea foundersAndCurrTeamDescription = new JTextArea(new About().foundersAndCurrentTeamDescription);
-                foundersAndCurrTeamDescription.setBounds(0,80,500, 150);
+                foundersAndCurrTeamDescription.setBounds(0,80,500, 250);
                 foundersAndCurrTeamDescription.setLineWrap(true);
                 foundersAndCurrTeamDescription.setWrapStyleWord(true);
                 foundersAndCurrTeamDescription.setEditable(false);
@@ -280,7 +280,7 @@ public class GUIMethods {
 
     public void additionalResources(JFrame addResourcesFrame){
         addResourcesFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        addResourcesFrame.setBounds(550,50, 400, 500);
+        addResourcesFrame.setBounds(500,50, 500, 500);
 
         Container addResourcesContainer = addResourcesFrame.getContentPane();
         addResourcesContainer.setLayout(null);
@@ -289,15 +289,15 @@ public class GUIMethods {
 
         JLabel ARTitle = new JLabel("Additional Resources");
         ARTitle.setOpaque(true);
-        ARTitle.setBounds(60, 40, 500, 30);
+        ARTitle.setBounds(115, 50, 500, 30);
         ARTitle.setFont(titleFont);
 
         //buttons in the additional resources page
         JButton onCampusResourcesButton = new JButton("On Campus Resources");
-        onCampusResourcesButton.setBounds(100, 150, 200, 70);
+        onCampusResourcesButton.setBounds(150, 150, 200, 70);
 
         JButton offCampusResourcesButton = new JButton("Off Campus Resources");
-        offCampusResourcesButton.setBounds(100, 250, 200, 70);
+        offCampusResourcesButton.setBounds(150, 250, 200, 70);
 
         // Add button to return home
         JButton returnHomeButton = new JButton("Back");
@@ -321,25 +321,25 @@ public class GUIMethods {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ARTitle.setText("On Campus Resources");
-                ARTitle.setBounds(50, 40, 500, 30);
+                ARTitle.setBounds(110, 40, 500, 30);
                 addResourcesContainer.remove(onCampusResourcesButton);
                 addResourcesContainer.remove(offCampusResourcesButton);
                 addResourcesContainer.remove(returnHomeButton);
                 addResourcesFrame.repaint();
-                addResourcesFrame.setBounds(550,50, 400, 650);
+                addResourcesFrame.setBounds(500,50, 500, 650);
 
                 //buttons in the additional resources page
                 JButton campusSafety = new JButton("Campus Safety");
-                campusSafety.setBounds(100, 150, 200, 70);
+                campusSafety.setBounds(150, 150, 200, 70);
 
                 JButton titleIVOffice = new JButton("Title IV Office");
-                titleIVOffice.setBounds(100, 250, 200, 70);
+                titleIVOffice.setBounds(150, 250, 200, 70);
 
                 JButton counselingCenter = new JButton("Counseling Center");
-                counselingCenter.setBounds(100, 350, 200, 70);
+                counselingCenter.setBounds(150, 350, 200, 70);
 
                 JButton otherOnCampusResources = new JButton("Other On Campus Resources");
-                otherOnCampusResources.setBounds(100, 450, 200, 70);
+                otherOnCampusResources.setBounds(150, 450, 200, 70);
 
                 // Add button to return home
                 JButton returnAddRe = new JButton("Back");
@@ -364,16 +364,16 @@ public class GUIMethods {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         ARTitle.setText("Campus Safety");
-                        ARTitle.setBounds(250, 40, 500, 30);
+                        ARTitle.setBounds(150, 40, 500, 50);
                         addResourcesContainer.remove(campusSafety);
                         addResourcesContainer.remove(titleIVOffice);
                         addResourcesContainer.remove(counselingCenter);
                         addResourcesContainer.remove(otherOnCampusResources);
                         addResourcesFrame.repaint();
 
-                        addResourcesFrame.setBounds(400,50, 700, 725);
+                        addResourcesFrame.setBounds(500,50, 500, 600);
                         JTextArea campusSafetyTextArea = new JTextArea(new AdditionalResources().campusSafetyDescription);
-                        campusSafetyTextArea.setBounds(0,100,700, 300);
+                        campusSafetyTextArea.setBounds(0,100,500, 400);
                         campusSafetyTextArea.setLineWrap(true);
                         campusSafetyTextArea.setWrapStyleWord(true);
                         campusSafetyTextArea.setEditable(false);
@@ -385,16 +385,16 @@ public class GUIMethods {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         ARTitle.setText("Title IV Office");
-                        ARTitle.setBounds(250, 40, 500, 30);
+                        ARTitle.setBounds(160, 40, 500, 30);
                         addResourcesContainer.remove(campusSafety);
                         addResourcesContainer.remove(titleIVOffice);
                         addResourcesContainer.remove(counselingCenter);
                         addResourcesContainer.remove(otherOnCampusResources);
                         addResourcesFrame.repaint();
 
-                        addResourcesFrame.setBounds(400,50, 700, 725);
+                        addResourcesFrame.setBounds(500,50, 500, 600);
                         JTextArea campusSafetyTextArea = new JTextArea(new AdditionalResources().titleIVOfficeDescription);
-                        campusSafetyTextArea.setBounds(0,100,700, 400);
+                        campusSafetyTextArea.setBounds(0,100,500, 450);
                         campusSafetyTextArea.setLineWrap(true);
                         campusSafetyTextArea.setWrapStyleWord(true);
                         campusSafetyTextArea.setEditable(false);
@@ -406,7 +406,7 @@ public class GUIMethods {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         ARTitle.setText("Counseling Center");
-                        ARTitle.setBounds(250, 40, 500, 30);
+                        ARTitle.setBounds(230, 30, 500, 50);
                         addResourcesContainer.remove(campusSafety);
                         addResourcesContainer.remove(titleIVOffice);
                         addResourcesContainer.remove(counselingCenter);
@@ -427,16 +427,16 @@ public class GUIMethods {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         ARTitle.setText("Other On Campus Resources");
-                        ARTitle.setBounds(25, 40, 450, 30);
+                        ARTitle.setBounds(50, 40, 450, 30);
                         addResourcesContainer.remove(campusSafety);
                         addResourcesContainer.remove(titleIVOffice);
                         addResourcesContainer.remove(counselingCenter);
                         addResourcesContainer.remove(otherOnCampusResources);
                         addResourcesFrame.repaint();
 
-                        addResourcesFrame.setBounds(525,50, 450, 600);
+                        addResourcesFrame.setBounds(500,50, 500, 600);
                         JTextArea campusSafetyTextArea = new JTextArea(new AdditionalResources().otherOnCampusResourcesDescription);
-                        campusSafetyTextArea.setBounds(0,100,450, 300);
+                        campusSafetyTextArea.setBounds(0,100,500, 300);
                         campusSafetyTextArea.setLineWrap(true);
                         campusSafetyTextArea.setWrapStyleWord(true);
                         campusSafetyTextArea.setEditable(false);
@@ -451,15 +451,15 @@ public class GUIMethods {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ARTitle.setText("Off Campus Resources");
-                ARTitle.setBounds(200, 40, 500, 30);
+                ARTitle.setBounds(100, 40, 500, 30);
                 addResourcesContainer.remove(onCampusResourcesButton);
                 addResourcesContainer.remove(offCampusResourcesButton);
                 addResourcesContainer.remove(returnHomeButton);
                 addResourcesFrame.repaint();
 
-                addResourcesFrame.setBounds(400,50, 700, 725);
+                addResourcesFrame.setBounds(500,50, 500, 500);
                 JTextArea offCampusTextArea = new JTextArea(new AdditionalResources().offCampusDescription);
-                offCampusTextArea.setBounds(0,100,700, 600);
+                offCampusTextArea.setBounds(0,100,500, 300);
                 offCampusTextArea.setLineWrap(true);
                 offCampusTextArea.setWrapStyleWord(true);
                 offCampusTextArea.setEditable(false);
