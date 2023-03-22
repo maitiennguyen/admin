@@ -220,7 +220,6 @@ public class Save extends ReportDAO implements sqlDataMethods
                 } else {
                     valueFreqMap.put(location, 1);
                 }
-                System.out.println(rs.getString("ID"));
             }
             average = (double) sum / count;
 
