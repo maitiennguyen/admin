@@ -970,7 +970,7 @@ public class GUIMethods {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                statsTextField.setText(new Save().applyFilters(startDateField.getText(), endDateField.getText(), identityField.getText(), (String) classComboBox.getSelectedItem(), classValue));
+                statsTextField.setText(new Save().applyFilters(startDateField.getText(), endDateField.getText(), identityField.getText(), classValue, (String) identityComboBox.getSelectedItem()));
             }
         });
 

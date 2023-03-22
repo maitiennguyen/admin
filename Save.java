@@ -170,7 +170,7 @@ public class Save extends ReportDAO implements sqlDataMethods
     }
 
     public String applyFilters(String startDate, String endDate, String identity, String classYear, String IdentityYN) {
-        BaseQuery query = new BaseQuery("ShortAnswers", "ParsedInfo") {
+        AddOns query = new AddOns("ShortAnswers", "ParsedInfo") {
             @Override
             protected String getJoinCondition() {
                 return "ShortAnswers.ID = ParsedInfo.ID";

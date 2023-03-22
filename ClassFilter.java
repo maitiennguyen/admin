@@ -1,4 +1,4 @@
-public class ClassFilter extends BaseQuery {
+public class ClassFilter extends AddOns {
     private String column;
     private int value;
 

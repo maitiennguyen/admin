@@ -1,4 +1,4 @@
-public class IdentityTxtFilter extends BaseQuery{
+public class IdentityTxtFilter extends AddOns {
     private String column;
     private String word;
 

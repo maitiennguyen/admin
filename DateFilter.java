@@ -1,9 +1,4 @@
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-public class DateFilter extends BaseQuery {
+public class DateFilter extends AddOns {
     private String startDate;
     private String endDate;
 
