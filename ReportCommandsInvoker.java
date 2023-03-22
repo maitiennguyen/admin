@@ -29,7 +29,7 @@ public class ReportCommandsInvoker {
         this.commandList.add(fillReport);
         this.commandList.add(saveReport);
 
-        this.executeEdits();
+        this.executeCommands();
 
         return 0;
     }
@@ -76,7 +76,7 @@ public class ReportCommandsInvoker {
     }
 
 
-    private void executeEdits() {
+    private void executeCommands() {
         for (Command edit : commandList) {
             edit.execute();
         }

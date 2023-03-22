@@ -1,7 +1,9 @@
 import java.sql.*;
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class Save extends ReportDAO implements sqlDataMethods
 {
@@ -166,6 +168,86 @@ public class Save extends ReportDAO implements sqlDataMethods
             return 5;
         }
     }
+
+    public String applyFilters(String startDate, String endDate, String identity, String classYear, String IdentityYN) {
+        BaseQuery query = new BaseQuery("ShortAnswers", "ParsedInfo") {
+            @Override
+            protected String getJoinCondition() {
+                return "ShortAnswers.ID = ParsedInfo.ID";
+            }
+        };
+
+        if (startDate != null && endDate != null) {
+            query.addFilter(new DateFilter(startDate, endDate));
+        }
+
+        if (identity != null) {
+            query.addFilter(new IdentityTxtFilter("ParsedInfo.Identity", identity));
+        }
+
+        if (classYear != null) {
+            query.addFilter(new ClassFilter("ParsedInfo.Class", Integer.parseInt(classYear)));
+        }
+
+        if (IdentityYN != null) {
+            query.addFilter(new IdentityYNFilter("ShortAnswers.IdentityYN", IdentityYN));
+        }
+
+        ArrayList<String> top3Locations = new ArrayList<>();
+        double average = 0;
+        int nReports = 0;
+        try {
+            ResultSet rs = query.executeQuery(conn);
+            nReports = 0;
+            int sum = 0;
+            int count = 0;
+
+            Map<String, Integer> valueFreqMap = new HashMap<>();
+            while (rs.next()) {
+                int mhiValue = Integer.parseInt(rs.getString("MHI"));
+                String location = rs.getString("Location");
+
+                //get mhi average
+                sum += mhiValue;
+                count++;
+
+                //get total number of reports
+                nReports++;
+
+                //get top 3 locations
+                if (valueFreqMap.containsKey(location)) {
+                    valueFreqMap.put(location, valueFreqMap.get(location) + 1);
+                } else {
+                    valueFreqMap.put(location, 1);
+                }
+                System.out.println(rs.getString("ID"));
+            }
+            average = (double) sum / count;
+
+            List<Map.Entry<String, Integer>> sortedEntries = new ArrayList<>(valueFreqMap.entrySet());
+            Collections.sort(sortedEntries, Map.Entry.comparingByValue(Comparator.reverseOrder()));
+            int count2 = 0;
+            for (Map.Entry<String, Integer> entry : sortedEntries) {
+                top3Locations.add(entry.getKey());
+                count2++;
+                if (count2 == 3) {
+                    break;
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error filtering data: " + e.getMessage());
+        }
+
+        String text = "Most frequent locations: " + top3Locations + "\n\nAverage MHI Number: " + average + "\n\nTotal number of reports: " + nReports;
+        return text;
+    }
+
+/*
+    public static void main(String[] args) {
+        Save test = new Save();
+        System.out.println(test.applyFilters("2020-01-01", "2021-01-01", "female", "0", "yes"));
+    }
+*/
 
 }
 
