@@ -8,6 +8,7 @@ import java.net.URI;
 import java.sql.*;
 
 public class GUIMethods {
+    private String classValue;
     public void about (JFrame aboutFrame) {
         aboutFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         aboutFrame.setBounds(500, 50, 500, 650);
@@ -928,6 +929,32 @@ public class GUIMethods {
         JComboBox<String> classComboBox = new JComboBox<>(new String[] {"", "First Year", "Second Year", "Third Year", "Fourth Year"});
         JComboBox<String> identityComboBox = new JComboBox<>(new String[] {"", "Yes", "No"});
 
+
+        // add action listener to classComboBox
+        classComboBox.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String selectedOption = (String) classComboBox.getSelectedItem();
+                switch (selectedOption) {
+                    case "Freshman":
+                        classValue = "3";
+                        break;
+                    case "Sophomore":
+                        classValue = "2";
+                        break;
+                    case "Junior":
+                        classValue = "1";
+                        break;
+                    case "Senior":
+                        classValue = "0";
+                        break;
+                    default:
+                        classValue = null;
+                        break;
+                }
+                // do something with selectedValue
+            }
+        });
+
         // add input fields and combo box to panel
         inputPanel.add(new JLabel("Start Date"));
         inputPanel.add(startDateField);
@@ -943,7 +970,7 @@ public class GUIMethods {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                statsTextField.setText(new Save().applyFilters(startDateField.getText(), endDateField.getText(), identityField.getText(), (String) classComboBox.getSelectedItem(), (String) identityComboBox.getSelectedItem()));
+                statsTextField.setText(new Save().applyFilters(startDateField.getText(), endDateField.getText(), identityField.getText(), (String) classComboBox.getSelectedItem(), classValue));
             }
         });
 
