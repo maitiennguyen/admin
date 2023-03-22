@@ -940,6 +940,13 @@ public class GUIMethods {
         inputPanel.add(new JLabel("IdentityYN"));
         inputPanel.add(identityComboBox);
 
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                statsTextField.setText(new Save().applyFilters(startDateField.getText(), endDateField.getText(), identityField.getText(), (String) classComboBox.getSelectedItem(), (String) identityComboBox.getSelectedItem()));
+            }
+        });
+
         // make frame visible
         campusStatsFrame.setVisible(true);
     }
@@ -970,7 +977,7 @@ public class GUIMethods {
             ResultSet numRowsResult = pstmt.executeQuery();
             if (numRowsResult.next()) {
                 int numRows = numRowsResult.getInt(1);
-                sb.append(String.format("Total number of rows: %d\n", numRows));
+                sb.append(String.format("Total number of reports: %d\n", numRows));
             }
         } catch (SQLException e) {
             e.printStackTrace();
