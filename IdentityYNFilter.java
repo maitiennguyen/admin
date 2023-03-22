@@ -1,4 +1,4 @@
-public class IdentityYNFilter extends BaseQuery{
+public class IdentityYNFilter extends AddOns {
     private String column;
     private String value;
 
