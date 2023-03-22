@@ -929,22 +929,21 @@ public class GUIMethods {
         JComboBox<String> classComboBox = new JComboBox<>(new String[] {"", "First Year", "Second Year", "Third Year", "Fourth Year"});
         JComboBox<String> identityComboBox = new JComboBox<>(new String[] {"", "Yes", "No"});
 
-
         // add action listener to classComboBox
         classComboBox.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String selectedOption = (String) classComboBox.getSelectedItem();
                 switch (selectedOption) {
-                    case "Freshman":
+                    case "First Year":
                         classValue = "3";
                         break;
-                    case "Sophomore":
+                    case "Second Year":
                         classValue = "2";
                         break;
-                    case "Junior":
+                    case "Third Year":
                         classValue = "1";
                         break;
-                    case "Senior":
+                    case "Fourth Year":
                         classValue = "0";
                         break;
                     default:
