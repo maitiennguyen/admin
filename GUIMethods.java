@@ -917,13 +917,13 @@ public class GUIMethods {
         // create panel for text fields and combo box
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new GridLayout(5, 2));
-        inputPanel.setBounds(campusStatsFrame.getWidth() / 4, campusStatsFrame.getHeight() - 300, campusStatsFrame.getWidth() / 2, 100);
+        inputPanel.setBounds(campusStatsFrame.getWidth() / 5, campusStatsFrame.getHeight() - 300, campusStatsFrame.getWidth() - 220, 100);
         campusStatsContainer.add(inputPanel);
 
         // create input fields
-        JTextField startDateField = new JTextField("Start Date");
-        JTextField endDateField = new JTextField("End Date");
-        JTextField identityField = new JTextField("Identity");
+        JTextField startDateField = new JTextField();
+        JTextField endDateField = new JTextField();
+        JTextField identityField = new JTextField();
 
         // create combo boxs
         JComboBox<String> classComboBox = new JComboBox<>(new String[] {"", "First Year", "Second Year", "Third Year", "Fourth Year"});
@@ -956,9 +956,9 @@ public class GUIMethods {
         });
 
         // add input fields and combo box to panel
-        inputPanel.add(new JLabel("Start Date"));
+        inputPanel.add(new JLabel("Start Date (yyyy-MM-dd)"));
         inputPanel.add(startDateField);
-        inputPanel.add(new JLabel("End Date"));
+        inputPanel.add(new JLabel("End Date (yyyy-MM-dd)"));
         inputPanel.add(endDateField);
         inputPanel.add(new JLabel("Identity"));
         inputPanel.add(identityField);
