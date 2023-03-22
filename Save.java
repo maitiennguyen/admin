@@ -178,11 +178,11 @@ public class Save extends ReportDAO implements sqlDataMethods
             }
         };
 
-        if (startDate.isEmpty() && endDate.isEmpty()) {
+        if (!startDate.isEmpty() && !endDate.isEmpty()) {
             query.addFilter(new DateFilter(startDate, endDate));
         }
 
-        if (identity.isEmpty()) {
+        if (!identity.isEmpty()) {
             query.addFilter(new IdentityTxtFilter("ParsedInfo.Identity", identity));
         }
 
@@ -190,7 +190,7 @@ public class Save extends ReportDAO implements sqlDataMethods
             query.addFilter(new ClassFilter("ParsedInfo.Class", Integer.parseInt(classYear)));
         }
 
-        if (IdentityYN.isEmpty()) {
+        if (!IdentityYN.isEmpty()) {
             query.addFilter(new IdentityYNFilter("ShortAnswers.IdentityYN", IdentityYN));
         }
 
