@@ -170,6 +170,7 @@ public class Save extends ReportDAO implements sqlDataMethods
     }
 
     public String applyFilters(String startDate, String endDate, String identity, String classYear, String IdentityYN) {
+        System.out.println(startDate);
         AddOns query = new AddOns("ShortAnswers", "ParsedInfo") {
             @Override
             protected String getJoinCondition() {
@@ -177,11 +178,11 @@ public class Save extends ReportDAO implements sqlDataMethods
             }
         };
 
-        if (startDate != null && endDate != null) {
+        if (startDate.isEmpty() && endDate.isEmpty()) {
             query.addFilter(new DateFilter(startDate, endDate));
         }
 
-        if (identity != null) {
+        if (identity.isEmpty()) {
             query.addFilter(new IdentityTxtFilter("ParsedInfo.Identity", identity));
         }
 
@@ -189,7 +190,7 @@ public class Save extends ReportDAO implements sqlDataMethods
             query.addFilter(new ClassFilter("ParsedInfo.Class", Integer.parseInt(classYear)));
         }
 
-        if (IdentityYN != null) {
+        if (IdentityYN.isEmpty()) {
             query.addFilter(new IdentityYNFilter("ShortAnswers.IdentityYN", IdentityYN));
         }
 
